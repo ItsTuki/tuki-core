@@ -1,0 +1,50 @@
+# Rangos de TukiCore. Edítalos con /rank o aquí (luego /tukicore reload).
+# prefix/suffix: códigos & y &#RRGGBB. chat-color: white, gray, #RRGGBB…
+# permissions: un "-" delante niega el permiso. inherits: rangos de los que hereda permisos.
+ranks:
+  owner:
+    display: "&4Dueño"
+    weight: 100
+    prefix: "&4&lDUEÑO &r"
+    chat-color: white
+    permissions: [tukicore.admin, tukiuhc.admin]
+    inherits: [admin]
+  admin:
+    display: "&cAdmin"
+    weight: 90
+    prefix: "&c[Admin] "
+    chat-color: white
+    permissions: [tukicore.admin, tukiuhc.admin]
+    inherits: [mod]
+  mod:
+    display: "&9Mod"
+    weight: 70
+    prefix: "&9[Mod] "
+    chat-color: white
+    permissions: [tukicore.staff, tukicore.chat.bypass, tukiuhc.staff]
+    inherits: [helper]
+  helper:
+    display: "&bHelper"
+    weight: 60
+    prefix: "&b[Helper] "
+    permissions: [tukicore.staffchat, tukicore.mute]
+    inherits: [mvp]
+  mvp:
+    display: "&6MVP"
+    weight: 30
+    prefix: "&6[MVP] "
+    chat-color: white
+    permissions: [tukicore.chat.color]
+    inherits: [vip]
+  vip:
+    display: "&aVIP"
+    weight: 20
+    prefix: "&a[VIP] "
+    permissions: []
+    inherits: [default]
+  default:
+    display: "&7Jugador"
+    weight: 0
+    prefix: "&7"
+    permissions: []
+    inherits: []

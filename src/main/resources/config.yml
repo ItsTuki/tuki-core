@@ -1,0 +1,47 @@
+# TukiCore — configuración. Textos en lang/es.yml y lang/en.yml.
+language: es
+
+ranks:
+  # AUTO: usa LuckPerms si está instalado, si no los rangos propios de TukiCore.
+  # TUKICORE: siempre los propios (players.yml). LUCKPERMS: siempre LuckPerms.
+  backend: AUTO
+  # Rango de los jugadores sin rango (con LuckPerms debe llamarse "default").
+  default: default
+  # Con LuckPerms: crear al iniciar los grupos de ranks.yml que no existan.
+  sync-to-luckperms: true
+
+chat:
+  # Formato del chat. Etiquetas: <prefix> <name> <suffix> <rank> <message> y <papi:nombre> (PlaceholderAPI).
+  # Un rango puede tener su propio "chat-format" en ranks.yml.
+  format-enabled: true
+  format: "<prefix><name><suffix> <dark_gray>»</dark_gray> <gray><message>"
+  # Milisegundos entre mensajes (tukicore.chat.bypass lo salta).
+  cooldown-ms: 1500
+  # Bloquear el mismo mensaje dos veces seguidas (30 s).
+  block-repeated: true
+  mentions:
+    # Al escribir el nombre de alguien (con o sin @) se resalta y le suena una notificación.
+    enabled: true
+    color: yellow
+  filter:
+    replacement: "***"
+    words: []
+
+staff-chat:
+  # Mensajes que empiezan con esto van al chat del staff (vacío = solo con /sc).
+  prefix: "$"
+
+join-quit:
+  # Mensajes de entrada/salida con el rango (lang: join.message, join.first, join.quit).
+  enabled: true
+
+tab:
+  # Prefijo y sufijo del rango en el tab. Si otro plugin cambia el nombre (TukiUHC en partida), se respeta.
+  rank-prefix: true
+  # Cabecera y pie del tab. Déjalo en false si usas TukiUHC (él pone los suyos).
+  header-footer:
+    enabled: false
+    header:
+      - "<gradient:#55FF55:#00AAAA><bold>Mi Servidor</bold></gradient>"
+    footer:
+      - "<gray>Jugadores: <white><papi:server_online>"

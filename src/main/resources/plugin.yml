@@ -1,0 +1,61 @@
+name: TukiCore
+main: cl.itstuki.core.TukiCore
+version: ${version}
+description: Rangos, chat y moderación para tu servidor. Compatible con TukiUHC.
+api-version: "26.1"
+authors: [ItsTuki]
+website: https://github.com/ItsTuki/tuki-core
+softdepend: [LuckPerms, PlaceholderAPI]
+# TukiUHC se carga después para leer los rangos de TukiCore.
+loadbefore: [TukiUHC]
+
+# Los comandos se registran con Brigadier desde el código.
+permissions:
+  tukicore.admin:
+    description: Todo TukiCore.
+    default: op
+    children:
+      tukicore.staff: true
+      tukicore.rank: true
+      tukicore.rank.edit: true
+      tukicore.rank.set: true
+      tukicore.reload: true
+      tukicore.gamemode: true
+      tukicore.gamemode.others: true
+      tukicore.fly: true
+      tukicore.fly.others: true
+      tukicore.chat.color: true
+      tukicore.chat.bypass: true
+      tukicore.mute.bypass: true
+      tukicore.clearchat.bypass: true
+      tukicore.mutechat.bypass: true
+  tukicore.staff:
+    description: "Moderación: staff chat, mute, mutechat, clearchat, broadcast y socialspy."
+    default: false
+    children:
+      tukicore.staffchat: true
+      tukicore.mute: true
+      tukicore.mutechat: true
+      tukicore.clearchat: true
+      tukicore.broadcast: true
+      tukicore.socialspy: true
+  tukicore.rank: {description: "/rank list, info y user", default: false}
+  tukicore.rank.edit: {description: "/rank create, delete, prefix, suffix, perm, inherit…", default: false}
+  tukicore.rank.set: {description: /rank set, default: false}
+  tukicore.reload: {description: /tukicore reload, default: false}
+  tukicore.msg: {description: "/msg y /r", default: true}
+  tukicore.socialspy: {description: /socialspy, default: false}
+  tukicore.staffchat: {description: /staffchat, default: false}
+  tukicore.broadcast: {description: /broadcast, default: false}
+  tukicore.clearchat: {description: /clearchat, default: false}
+  tukicore.clearchat.bypass: {description: No se le borra el chat, default: false}
+  tukicore.mutechat: {description: /mutechat, default: false}
+  tukicore.mutechat.bypass: {description: Escribir con el chat silenciado, default: false}
+  tukicore.mute: {description: "/mute y /unmute", default: false}
+  tukicore.mute.bypass: {description: No puede ser silenciado, default: false}
+  tukicore.chat.color: {description: Usar códigos & en el chat, default: false}
+  tukicore.chat.bypass: {description: Sin anti-spam ni filtro, default: false}
+  tukicore.gamemode: {description: /gm, default: false}
+  tukicore.gamemode.others: {description: /gm a otros, default: false}
+  tukicore.fly: {description: /fly, default: false}
+  tukicore.fly.others: {description: /fly a otros, default: false}

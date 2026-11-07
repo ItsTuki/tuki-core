@@ -1,0 +1,126 @@
+# TukiCore — textos en español (formato MiniMessage: https://docs.advntr.dev/minimessage/format)
+# <prefix> inserta el prefijo. <rank> = prefijo del rango del jugador, <papi:nombre> = PlaceholderAPI.
+# Deja un texto en "" para no enviarlo. No cambies este número: el plugin lo usa para actualizar el archivo.
+lang-version: 2
+prefix: "<dark_gray>[<gradient:#55FF55:#00AAAA><bold>Core</bold></gradient><dark_gray>]</dark_gray> <aqua>»</aqua> "
+
+core:
+  version: "<prefix><gray>TukiCore <white>v<version></white> <dark_gray>|</dark_gray> rangos: <white><ranks></white> <dark_gray>|</dark_gray> backend: <white><backend>"
+  reloaded: "<prefix><green>Configuración, idioma y rangos recargados."
+  player-only: "<prefix><red>Solo un jugador puede usar esto."
+  unknown-player: "<prefix><red>No conozco a <white><player></white>."
+  bad-duration: "<prefix><red>Duración inválida: <white><value></white> <gray>(usa 30m, 2h, 7d, 1w o perm)"
+  help:
+    - "<gradient:#55FF55:#00AAAA><bold>TukiCore</bold></gradient> <gray>— comandos"
+    - "<yellow>/rank</yellow> <gray>— rangos (crear, prefijos, permisos, asignar)"
+    - "<yellow>/msg <jugador> <mensaje></yellow> <gray>· <yellow>/r</yellow> <gray>— mensajes privados"
+    - "<yellow>/sc [mensaje]</yellow> <gray>— chat del staff (o empieza el mensaje con $)"
+    - "<yellow>/mute <jugador> [tiempo] [razón]</yellow> <gray>· <yellow>/unmute</yellow>"
+    - "<yellow>/mutechat</yellow> <gray>· <yellow>/clearchat</yellow> <gray>· <yellow>/broadcast</yellow> <gray>· <yellow>/socialspy</yellow>"
+    - "<yellow>/gm <modo> [jugador]</yellow> <gray>· <yellow>/fly [jugador]</yellow>"
+    - "<yellow>/tukicore reload</yellow> <gray>— recarga todo"
+
+rank:
+  help:
+    - "<gradient:#55FF55:#00AAAA><bold>Rangos</bold></gradient>"
+    - "<yellow>/rank list</yellow> <gray>· <yellow>/rank info <rango></yellow> <gray>· <yellow>/rank user <jugador></yellow>"
+    - "<yellow>/rank set <jugador> <rango> [tiempo]</yellow> <gray>— asigna (ej. 30d para temporal)"
+    - "<yellow>/rank create <rango> [peso]</yellow> <gray>· <yellow>/rank delete <rango></yellow>"
+    - "<yellow>/rank prefix <rango> <texto|none></yellow> <gray>· <yellow>/rank suffix</yellow> <gray>· <yellow>/rank display</yellow>"
+    - "<yellow>/rank weight <rango> <peso></yellow> <gray>· <yellow>/rank color <rango> <color|none></yellow>"
+    - "<yellow>/rank perm <rango> add|remove <permiso></yellow> <gray>(\"-permiso\" lo niega)"
+    - "<yellow>/rank inherit <rango> add|remove <rango></yellow>"
+    - "<gray>Colores con <white>&a</white>, <white>&l</white>, <white>&#FF8800</white>…"
+  list-header: "<prefix><gray>Rangos (<white><count></white>) <dark_gray>— backend: <white><backend>"
+  list-line: "<dark_gray> • </dark_gray><white><rank></white> <dark_gray>(<weight>)</dark_gray> <rank_prefix><gray>— <display>"
+  info:
+    - "<gray>Rango <white><rank></white> <dark_gray>— <display>"
+    - "<gray>Peso: <white><weight>"
+    - "<gray>Prefijo: <rank_prefix><dark_gray>(<prefix_raw>)"
+    - "<gray>Sufijo: <suffix>"
+    - "<gray>Color del chat: <white><color>"
+    - "<gray>Hereda de: <white><inherits>"
+    - "<gray>Permisos: <white><permissions>"
+  unknown: "<prefix><red>No existe el rango <white><rank></white>."
+  created: "<prefix><green>Rango <white><rank></white> creado (peso <weight>). Ponle prefijo con /rank prefix <rank> &a[<rank>]"
+  cannot-create: "<prefix><red>No se pudo crear <white><rank></white>: ya existe o el nombre no es válido (a-z, 0-9, _ y -)."
+  deleted: "<prefix><yellow>Rango <white><rank></white> borrado."
+  cannot-delete: "<prefix><red>No se puede borrar <white><rank></white> (no existe o es el rango por defecto)."
+  prefix-set: "<prefix><green>Prefijo de <white><rank></white>: <rank_prefix><gray>(ejemplo)"
+  suffix-set: "<prefix><green>Sufijo de <white><rank></white>: <gray>Nombre<suffix>"
+  display-set: "<prefix><green>Nombre de <white><rank></white>: <display>"
+  weight-set: "<prefix><green>Peso de <white><rank></white>: <white><weight>"
+  color-set: "<prefix><green>Color del chat de <white><rank></white>: <white><color>"
+  perm-added: "<prefix><green>+ <white><permission></white> en <white><rank>"
+  perm-removed: "<prefix><yellow>- <white><permission></white> en <white><rank>"
+  inherit-added: "<prefix><green><white><rank></white> ahora hereda de <white><parent>"
+  inherit-removed: "<prefix><yellow><white><rank></white> ya no hereda de <white><parent>"
+  set: "<prefix><green><white><player></white> ahora es <display> <gray>(<time>)"
+  you-got: "<prefix><green>¡Ahora tienes el rango <display><green>! <gray>(<time>)"
+  user: "<prefix><white><player></white> <gray>tiene el rango <white><rank></white> <gray>(<time>)"
+  expired: "<prefix><yellow>Tu rango <white><rank></white> expiró."
+  error: "<prefix><red>No se pudo asignar el rango. Revisa la consola."
+
+chat:
+  name-hover: "<rank><newline><gray>Clic para mandarle un mensaje a <white><player>"
+  slow-down: "<prefix><red>Espera <white><seconds></white> s antes de escribir otra vez."
+  repeated: "<prefix><red>No repitas el mismo mensaje."
+  mentioned: "<yellow><player> <gray>te mencionó en el chat"
+
+staffchat:
+  format: "<dark_gray>[<red><bold>STAFF</bold></red>]</dark_gray> <player> <dark_gray>»</dark_gray> <aqua><message>"
+  enabled: "<prefix><green>Staff chat activado: todo lo que escribas va al staff."
+  disabled: "<prefix><yellow>Staff chat desactivado."
+
+msg:
+  to: "<dark_gray>[<gray>Tú <dark_gray>→</dark_gray> <white><player></white>]</dark_gray> <gray><message>"
+  from: "<dark_gray>[<white><player></white> <dark_gray>→</dark_gray> <gray>Tú]</dark_gray> <gray><message>"
+  spy: "<dark_gray>[Spy] <gray><from> → <to>: <message>"
+  self: "<prefix><red>No puedes mandarte mensajes a ti mismo."
+  muted: "<prefix><red>Estás silenciado."
+  no-reply: "<prefix><red>No tienes a quién responder."
+  spy-on: "<prefix><green>Socialspy activado."
+  spy-off: "<prefix><yellow>Socialspy desactivado."
+
+mute:
+  no-reason: "Sin razón"
+  broadcast: "<prefix><red><player></red> <gray>fue silenciado por <white><time></white> por <white><by></white>. Razón: <white><reason>"
+  broadcast-perm: "<prefix><red><player></red> <gray>fue silenciado permanentemente por <white><by></white>. Razón: <white><reason>"
+  you-are-muted: "<prefix><red>Estás silenciado (<white><time></white> restante). Razón: <white><reason>"
+  you-are-muted-perm: "<prefix><red>Estás silenciado permanentemente. Razón: <white><reason>"
+  unmuted: "<prefix><green><player> ya puede hablar."
+  you-were-unmuted: "<prefix><green>Ya puedes volver a hablar."
+  not-muted: "<prefix><yellow><player> no estaba silenciado."
+
+mutechat:
+  enabled: "<prefix><red>El chat fue silenciado por <white><player></white>."
+  disabled: "<prefix><green>El chat vuelve a estar abierto."
+  blocked: "<prefix><red>El chat está silenciado."
+
+clearchat:
+  done: "<prefix><gray>El chat fue limpiado por <white><player></white>."
+
+broadcast:
+  format: "<dark_gray>[<gold><bold>ANUNCIO</bold></gold>]</dark_gray> <white><message>"
+
+gamemode:
+  changed: "<prefix><gray>Modo de juego: <white><mode>"
+  changed-other: "<prefix><gray>Modo de <white><player></white>: <white><mode>"
+  names:
+    survival: "Supervivencia"
+    creative: "Creativo"
+    adventure: "Aventura"
+    spectator: "Espectador"
+
+fly:
+  enabled: "<prefix><green>Vuelo activado."
+  disabled: "<prefix><yellow>Vuelo desactivado."
+  enabled-other: "<prefix><green>Vuelo activado para <white><player></white>."
+  disabled-other: "<prefix><yellow>Vuelo desactivado para <white><player></white>."
+
+join:
+  message: "<dark_gray>[<green>+</green>]</dark_gray> <rank_prefix><white><player>"
+  first: "<dark_gray>[<green>+</green>]</dark_gray> <yellow>¡Bienvenido por primera vez, <white><player></white>! <gray>(jugador #<count>)"
+  quit: "<dark_gray>[<red>-</red>]</dark_gray> <rank_prefix><white><player>"
+  # Mensajes que recibe el jugador al entrar (lista vacía = ninguno).
+  motd: []
