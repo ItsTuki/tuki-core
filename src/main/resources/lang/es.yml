@@ -1,7 +1,7 @@
 # TukiCore — textos en español (formato MiniMessage: https://docs.advntr.dev/minimessage/format)
 # <prefix> inserta el prefijo. <rank> = prefijo del rango del jugador, <papi:nombre> = PlaceholderAPI.
 # Deja un texto en "" para no enviarlo. No cambies este número: el plugin lo usa para actualizar el archivo.
-lang-version: 2
+lang-version: 3
 prefix: "<dark_gray>[<gradient:#55FF55:#00AAAA><bold>Core</bold></gradient><dark_gray>]</dark_gray> <aqua>»</aqua> "
 
 core:
@@ -18,6 +18,7 @@ core:
     - "<yellow>/mute <jugador> [tiempo] [razón]</yellow> <gray>· <yellow>/unmute</yellow>"
     - "<yellow>/mutechat</yellow> <gray>· <yellow>/clearchat</yellow> <gray>· <yellow>/broadcast</yellow> <gray>· <yellow>/socialspy</yellow>"
     - "<yellow>/gm <modo> [jugador]</yellow> <gray>· <yellow>/fly [jugador]</yellow>"
+    - "<yellow>/v [jugador|list]</yellow> <gray>— vanish · <yellow>/mods [jugador]</yellow> <gray>— cliente y mods"
     - "<yellow>/tukicore reload</yellow> <gray>— recarga todo"
 
 rank:
@@ -124,3 +125,27 @@ join:
   quit: "<dark_gray>[<red>-</red>]</dark_gray> <rank_prefix><white><player>"
   # Mensajes que recibe el jugador al entrar (lista vacía = ninguno).
   motd: []
+
+vanish:
+  enabled: "<prefix><green>Ahora estás en vanish: nadie te ve."
+  disabled: "<prefix><yellow>Saliste del vanish: ya te ven."
+  still: "<prefix><gray>Sigues en vanish (<white>/v</white> para salir)."
+  actionbar: "<aqua>Estás en vanish"
+  staff-on: "<prefix><gray><white><player></white> entró en vanish."
+  staff-off: "<prefix><gray><white><player></white> salió del vanish."
+  other-on: "<prefix><green><player> ahora está en vanish."
+  other-off: "<prefix><yellow><player> salió del vanish."
+  list: "<prefix><gray>En vanish (<white><count></white>): <white><players>"
+  chat-blocked: "<prefix><red>Estás en vanish: usa el staff chat ($) o empieza con <white>!</white> para hablar en el chat."
+
+client:
+  alert: "<dark_gray>[<aqua>Cliente</aqua>]</dark_gray> <white><player></white> <gray>entró con <white><loader></white> <dark_gray>(<brand>)</dark_gray> <gray>· mods detectados: <white><count>"
+  alert-suspicious: "<dark_gray>[<red><bold>⚠ Cliente</bold></red>]</dark_gray> <white><player></white> <gray>entró con <white><loader></white> <dark_gray>(<brand>)</dark_gray> <red>— sospechoso: <flags>"
+  hover: "<gray>Marca: <white><brand><newline><gray>Canales de mods: <white><mods><newline><gray>Alertas: <white><flags><newline><dark_gray>Es una pista: un cliente de hacks puede disfrazarse."
+  mods-line: "<gray>  Canales de mods: <white><mods>"
+  list-header: "<prefix><gray>Clientes de los jugadores conectados (<white><count></white>):"
+  no-mods: "ninguno"
+  unknown: "Desconocido"
+  flag-spoofed: "dice ser vanilla pero tiene canales de mods"
+  flag-no-brand: "no envió la marca del cliente"
+  flag-keyword: "coincide con"

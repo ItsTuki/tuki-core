@@ -50,6 +50,16 @@ public final class TukiCoreAPI {
         return plugin != null && plugin.mutes().mute(player) != null;
     }
 
+    /** Está en /vanish (también se puede leer el metadata "vanished" del jugador). */
+    public static boolean isVanished(Player player) {
+        return plugin != null && plugin.vanish().isVanished(player);
+    }
+
+    /** Cliente con el que entró: Vanilla, Fabric, Forge, Lunar Client… */
+    public static String client(Player player) {
+        return plugin == null ? "" : plugin.clientCheck().inspect(player).loader();
+    }
+
     public static @Nullable Rank rankInfo(String name) {
         return plugin == null ? null : plugin.ranks().rank(name);
     }

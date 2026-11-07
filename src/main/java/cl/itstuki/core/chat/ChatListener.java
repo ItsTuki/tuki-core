@@ -62,6 +62,18 @@ public final class ChatListener implements Listener {
             return;
         }
 
+        // En vanish hablar en el chat normal te delataría.
+        if (plugin.vanish().isVanished(sender) && plugin.getConfig().getBoolean("vanish.block-chat", true)) {
+            if (plain.startsWith("!")) {
+                event.message(event.message().replaceText(TextReplacementConfig.builder().match("^!\\s*").replacement("").once().build()));
+                plain = plain.substring(1).trim();
+            } else {
+                event.setCancelled(true);
+                plugin.lang().send(sender, "vanish.chat-blocked");
+                return;
+            }
+        }
+
         if (!sender.hasPermission("tukicore.mute.bypass")) {
             MuteManager.Mute mute = plugin.mutes().mute(sender.getUniqueId());
             if (mute != null) {

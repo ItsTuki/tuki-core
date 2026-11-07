@@ -1,7 +1,7 @@
 # TukiCore — English texts (MiniMessage format: https://docs.advntr.dev/minimessage/format)
 # <prefix> inserts the prefix. <rank> = player's rank prefix, <papi:name> = PlaceholderAPI.
 # Leave a text as "" to not send it. Don't change this number: the plugin uses it to update the file.
-lang-version: 2
+lang-version: 3
 prefix: "<dark_gray>[<gradient:#55FF55:#00AAAA><bold>Core</bold></gradient><dark_gray>]</dark_gray> <aqua>»</aqua> "
 
 core:
@@ -18,6 +18,7 @@ core:
     - "<yellow>/mute <player> [time] [reason]</yellow> <gray>· <yellow>/unmute</yellow>"
     - "<yellow>/mutechat</yellow> <gray>· <yellow>/clearchat</yellow> <gray>· <yellow>/broadcast</yellow> <gray>· <yellow>/socialspy</yellow>"
     - "<yellow>/gm <mode> [player]</yellow> <gray>· <yellow>/fly [player]</yellow>"
+    - "<yellow>/v [player|list]</yellow> <gray>— vanish · <yellow>/mods [player]</yellow> <gray>— client and mods"
     - "<yellow>/tukicore reload</yellow> <gray>— reloads everything"
 
 rank:
@@ -124,3 +125,27 @@ join:
   quit: "<dark_gray>[<red>-</red>]</dark_gray> <rank_prefix><white><player>"
   # Messages sent to the player on join (empty list = none).
   motd: []
+
+vanish:
+  enabled: "<prefix><green>You are now vanished: nobody can see you."
+  disabled: "<prefix><yellow>You are visible again."
+  still: "<prefix><gray>You are still vanished (<white>/v</white> to leave)."
+  actionbar: "<aqua>You are vanished"
+  staff-on: "<prefix><gray><white><player></white> vanished."
+  staff-off: "<prefix><gray><white><player></white> is visible again."
+  other-on: "<prefix><green><player> is now vanished."
+  other-off: "<prefix><yellow><player> is visible again."
+  list: "<prefix><gray>Vanished (<white><count></white>): <white><players>"
+  chat-blocked: "<prefix><red>You are vanished: use staff chat ($) or start with <white>!</white> to talk in chat."
+
+client:
+  alert: "<dark_gray>[<aqua>Client</aqua>]</dark_gray> <white><player></white> <gray>joined with <white><loader></white> <dark_gray>(<brand>)</dark_gray> <gray>· mods detected: <white><count>"
+  alert-suspicious: "<dark_gray>[<red><bold>⚠ Client</bold></red>]</dark_gray> <white><player></white> <gray>joined with <white><loader></white> <dark_gray>(<brand>)</dark_gray> <red>— suspicious: <flags>"
+  hover: "<gray>Brand: <white><brand><newline><gray>Mod channels: <white><mods><newline><gray>Flags: <white><flags><newline><dark_gray>It's a hint: a hacked client can disguise itself."
+  mods-line: "<gray>  Mod channels: <white><mods>"
+  list-header: "<prefix><gray>Clients of online players (<white><count></white>):"
+  no-mods: "none"
+  unknown: "Unknown"
+  flag-spoofed: "claims vanilla but has mod channels"
+  flag-no-brand: "did not send a client brand"
+  flag-keyword: "matches"

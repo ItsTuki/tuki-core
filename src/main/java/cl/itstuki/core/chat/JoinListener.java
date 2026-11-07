@@ -22,7 +22,9 @@ public final class JoinListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        if (plugin.getConfig().getBoolean("join-quit.enabled", true)) {
+        if (plugin.vanish().isVanished(player)) {
+            event.joinMessage(null); // Entra en vanish sin avisar.
+        } else if (plugin.getConfig().getBoolean("join-quit.enabled", true)) {
             String key = player.hasPlayedBefore() ? "join.message" : "join.first";
             event.joinMessage(plugin.lang().raw(key).isEmpty() ? null : plugin.lang().format(plugin.lang().raw(key), player,
                     Lang.c("rank_prefix", Text.legacy(plugin.ranks().prefix(player))), Lang.p("player", player.getName()),
@@ -39,7 +41,9 @@ public final class JoinListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void onQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        if (plugin.getConfig().getBoolean("join-quit.enabled", true)) {
+        if (plugin.vanish().isVanished(player)) {
+            event.quitMessage(null);
+        } else if (plugin.getConfig().getBoolean("join-quit.enabled", true)) {
             String raw = plugin.lang().raw("join.quit");
             event.quitMessage(raw.isEmpty() ? null : plugin.lang().format(raw, player,
                     Lang.c("rank_prefix", Text.legacy(plugin.ranks().prefix(player))), Lang.p("player", player.getName())));

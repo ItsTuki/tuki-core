@@ -31,6 +31,44 @@ staff-chat:
   # Mensajes que empiezan con esto van al chat del staff (vacío = solo con /sc).
   prefix: "$"
 
+vanish:
+  # Al entrar/salir del vanish, los jugadores ven un mensaje falso de salida/entrada.
+  fake-messages: true
+  # En vanish no se puede escribir en el chat normal (empieza con ! para hablar igual). El staff chat sí.
+  block-chat: true
+  # Sin daño mientras estás en vanish.
+  god-mode: true
+  pickup-items: false
+
+client-check:
+  # Aviso al staff (tukicore.clientcheck.alerts) de con qué cliente entra cada jugador: vanilla, Fabric,
+  # Forge, Lunar… y los canales de sus mods. Paper no recibe la lista de mods: los canales son una pista.
+  enabled: true
+  # true = avisar de todos; false = solo de los sospechosos.
+  alert-all-joins: true
+  delay-seconds: 3
+  # Palabras que marcan como sospechoso si aparecen en la marca del cliente o en sus canales.
+  suspicious:
+    - wurst
+    - meteor
+    - liquidbounce
+    - aristois
+    - impact
+    - rusherhack
+    - future
+    - inertia
+    - konas
+    - thunderhack
+    - bleachhack
+    - boze
+    - sigma
+    - novoline
+    - vape
+    - xray
+    - freecam
+    - baritone
+    - killaura
+
 join-quit:
   # Mensajes de entrada/salida con el rango (lang: join.message, join.first, join.quit).
   enabled: true

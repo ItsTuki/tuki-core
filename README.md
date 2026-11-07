@@ -51,19 +51,39 @@ Vienen 7 rangos de ejemplo en `ranks.yml`: owner, admin, mod, helper, mvp, vip y
 | `/mutechat` · `/clearchat` · `/broadcast <mensaje>` | `tukicore.mutechat` · `tukicore.clearchat` · `tukicore.broadcast` |
 | `/staffchat` (`/sc`) · `/socialspy` | `tukicore.staffchat` · `tukicore.socialspy` |
 | `/gm <modo> [jugador]` · `/fly [jugador]` | `tukicore.gamemode(.others)` · `tukicore.fly(.others)` |
+| `/vanish` (`/v`) · `/v <jugador>` · `/v list` | `tukicore.vanish` · `tukicore.vanish.others` (ver: `tukicore.vanish.see`) |
+| `/mods [jugador\|all]` (`/clientinfo`) | `tukicore.clientcheck` (avisos: `tukicore.clientcheck.alerts`) |
 | `/msg` · `/r` | `tukicore.msg` (todos) |
 | `/tukicore [reload\|help]` | `tukicore.reload` |
 
 Permisos agrupados:
 - `tukicore.admin` (OP): todo.
-- `tukicore.staff`: moderación.
+- `tukicore.staff`: moderación, vanish y detección de clientes.
 - Bypass: `tukicore.chat.bypass`, `tukicore.mute.bypass`, `tukicore.mutechat.bypass` y `tukicore.clearchat.bypass`.
+
+## Vanish y detección de clientes
+
+- **`/vanish` (`/v`)**:
+  - Quien no tenga `tukicore.vanish.see` deja de verte, también en el tab y en la lista de servidores.
+  - Mientras estás en vanish: sin daño, sin recoger ítems, los mobs no te atacan y no activas placas de presión.
+  - Al entrar o salir se muestra un mensaje falso de salida/entrada. Si sales del servidor en vanish, vuelves en vanish.
+  - El chat normal queda bloqueado para que no te delates (empieza con `!` para hablar igual); el staff chat sí funciona.
+  - Otros comandos: `/v <jugador>` y `/v list`.
+- **Detección de clientes**:
+  - Cuando alguien entra, el staff con `tukicore.clientcheck.alerts` recibe un aviso con el cliente: Vanilla, Fabric, Forge, NeoForge, Quilt, Lunar, Badlion, Feather o LabyMod. Al pasar el mouse por el aviso se ven los canales de mods.
+  - `/mods <jugador>` (`/clientinfo`) o `/mods all` para revisarlo cuando quieras.
+  - Marca como **sospechoso** a quien:
+    - dice ser vanilla pero registra canales de Fabric o Forge (está ocultando la marca);
+    - no envía marca;
+    - coincide con la lista `client-check.suspicious` (wurst, meteor, liquidbounce, baritone, xray…).
+  - Paper **no recibe la lista de mods** del cliente: los canales de red son la mejor pista disponible. Un cliente de hacks bien hecho puede disfrazarse de vanilla, así que es una ayuda para vigilar, no una prueba.
 
 ## Compatibilidad con TukiUHC
 
 - TukiUHC usa los prefijos de TukiCore en el chat de la partida.
 - En el lobby, el chat y el tab son de TukiCore. En partida manda TukiUHC: canales de equipo y nombres "???" con rotación de skins. TukiCore no pisa esos nombres.
 - Los silencios, el mutechat y el anti-spam siguen funcionando durante la partida.
+- Quien está en vanish no entra en la partida.
 - Los rangos de ejemplo ya incluyen `tukiuhc.admin` (owner/admin) y `tukiuhc.staff` (mod).
 
 ## PlaceholderAPI
@@ -74,7 +94,8 @@ Permisos agrupados:
 | `%tukicore_prefix%`, `%tukicore_suffix%` | Prefijo y sufijo |
 | `%tukicore_weight%` | Peso del rango |
 | `%tukicore_muted%`, `%tukicore_mute_left%` | Silencio del jugador |
-| `%tukicore_chat_muted%`, `%tukicore_ranks%`, `%tukicore_backend%` | Globales |
+| `%tukicore_vanished%`, `%tukicore_client%`, `%tukicore_client_brand%` | Vanish y cliente del jugador |
+| `%tukicore_online%` (sin los que están en vanish), `%tukicore_vanished_count%`, `%tukicore_chat_muted%`, `%tukicore_ranks%`, `%tukicore_backend%` | Globales |
 
 ## API
 

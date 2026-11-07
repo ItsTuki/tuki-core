@@ -164,6 +164,34 @@ public final class CoreCommands {
                     }
                 }))).build(), "Quita el silencio a un jugador", List.of());
 
+        // ── Vanish y clientes ──
+        registrar.register(Commands.literal("vanish").requires(perm("tukicore.vanish"))
+                .executes(ok(ctx -> {
+                    if (sender(ctx) instanceof Player p) {
+                        plugin.vanish().set(p, !plugin.vanish().isVanished(p));
+                    } else {
+                        lang().send(sender(ctx), "core.player-only");
+                    }
+                }))
+                .then(Commands.literal("list").executes(ok(ctx -> {
+                    var list = plugin.vanish().online().stream().map(Player::getName).toList();
+                    lang().send(sender(ctx), "vanish.list", Lang.p("count", list.size()),
+                            Lang.p("players", list.isEmpty() ? "-" : String.join(", ", list)));
+                })))
+                .then(Commands.argument("jugador", ArgumentTypes.player()).requires(perm("tukicore.vanish.others"))
+                        .executes(ok(ctx -> {
+                            Player target = players(ctx, "jugador").getFirst();
+                            plugin.vanish().set(target, !plugin.vanish().isVanished(target));
+                            lang().send(sender(ctx), plugin.vanish().isVanished(target) ? "vanish.other-on" : "vanish.other-off",
+                                    Lang.p("player", target.getName()));
+                        }))).build(), "Te vuelve invisible para los jugadores", List.of("v"));
+        registrar.register(Commands.literal("clientinfo").requires(perm("tukicore.clientcheck"))
+                .executes(ok(ctx -> showAllClients(sender(ctx))))
+                .then(Commands.literal("all").executes(ok(ctx -> showAllClients(sender(ctx)))))
+                .then(Commands.argument("jugador", ArgumentTypes.player()).executes(ok(ctx ->
+                        plugin.clientCheck().show(sender(ctx), players(ctx, "jugador").getFirst())))).build(),
+                "Con qué cliente y mods entró un jugador", List.of("client", "mods", "brand"));
+
         // ── Utilidades ──
         registrar.register(gamemodeCommand().build(), "Cambia el modo de juego", List.of("gamemode"));
         registrar.register(Commands.literal("fly").requires(perm("tukicore.fly"))
@@ -178,6 +206,13 @@ public final class CoreCommands {
                                 toggleFly(sender(ctx), p);
                             }
                         }))).build(), "Activa o desactiva el vuelo", List.of());
+    }
+
+    private void showAllClients(CommandSender to) {
+        lang().send(to, "client.list-header", Lang.p("count", Bukkit.getOnlinePlayers().size()));
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            to.sendMessage(plugin.clientCheck().describe(p, plugin.clientCheck().inspect(p)));
+        }
     }
 
     private void toggleFly(CommandSender by, Player target) {

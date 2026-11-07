@@ -45,6 +45,10 @@ final class CoreExpansion extends PlaceholderExpansion {
                 return String.valueOf(plugin.ranks().all().size());
             case "backend":
                 return plugin.ranks().backend().name();
+            case "online":
+                return String.valueOf(org.bukkit.Bukkit.getOnlinePlayers().size() - plugin.vanish().count());
+            case "vanished_count":
+                return String.valueOf(plugin.vanish().count());
             default:
                 break;
         }
@@ -69,6 +73,9 @@ final class CoreExpansion extends PlaceholderExpansion {
             case "prefix" -> plugin.ranks().prefix(player);
             case "suffix" -> plugin.ranks().suffix(player);
             case "weight" -> String.valueOf(rank.weight());
+            case "vanished" -> plugin.vanish().isVanished(player) ? "true" : "false";
+            case "client" -> plugin.clientCheck().inspect(player).loader();
+            case "client_brand" -> plugin.clientCheck().inspect(player).brand();
             default -> null;
         };
     }

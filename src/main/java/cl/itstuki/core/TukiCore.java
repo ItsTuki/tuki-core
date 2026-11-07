@@ -11,6 +11,8 @@ import cl.itstuki.core.command.CoreCommands;
 import cl.itstuki.core.hook.PlaceholderHook;
 import cl.itstuki.core.lang.Lang;
 import cl.itstuki.core.rank.RankManager;
+import cl.itstuki.core.staff.ClientCheck;
+import cl.itstuki.core.staff.VanishManager;
 import cl.itstuki.core.util.Credits;
 import cl.itstuki.core.util.Text;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
@@ -26,6 +28,8 @@ public final class TukiCore extends JavaPlugin {
     private TabManager tab;
     private StaffChat staffChat;
     private PrivateMessages messages;
+    private VanishManager vanish;
+    private ClientCheck clientCheck;
     private final PlaceholderHook placeholders = new PlaceholderHook();
 
     @Override
@@ -39,6 +43,8 @@ public final class TukiCore extends JavaPlugin {
         tab = new TabManager(this);
         staffChat = new StaffChat(this);
         messages = new PrivateMessages(this);
+        vanish = new VanishManager(this);
+        clientCheck = new ClientCheck(this);
         ranks.startBackend();
         TukiCoreAPI.init(this);
         placeholders.enable(this);
@@ -49,6 +55,9 @@ public final class TukiCore extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new ChatListener(this), this);
         getServer().getPluginManager().registerEvents(new JoinListener(this), this);
+        getServer().getPluginManager().registerEvents(vanish, this);
+        getServer().getPluginManager().registerEvents(clientCheck, this);
+        vanish.start();
         tab.start();
 
         CoreCommands commands = new CoreCommands(this);
@@ -81,4 +90,6 @@ public final class TukiCore extends JavaPlugin {
     public TabManager tab() { return tab; }
     public StaffChat staffChat() { return staffChat; }
     public PrivateMessages messages() { return messages; }
+    public VanishManager vanish() { return vanish; }
+    public ClientCheck clientCheck() { return clientCheck; }
 }

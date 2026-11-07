@@ -29,6 +29,10 @@ public final class PrivateMessages {
     }
 
     public void send(Player from, Player to, String message) {
+        if (!plugin.vanish().canSee(from, to)) {
+            plugin.lang().send(from, "core.unknown-player", Lang.p("player", to.getName()));
+            return;
+        }
         if (from.equals(to)) {
             plugin.lang().send(from, "msg.self");
             return;

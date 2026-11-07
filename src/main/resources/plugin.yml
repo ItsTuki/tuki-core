@@ -29,6 +29,7 @@ permissions:
       tukicore.mute.bypass: true
       tukicore.clearchat.bypass: true
       tukicore.mutechat.bypass: true
+      tukicore.vanish.others: true
   tukicore.staff:
     description: "Moderación: staff chat, mute, mutechat, clearchat, broadcast y socialspy."
     default: false
@@ -39,6 +40,10 @@ permissions:
       tukicore.clearchat: true
       tukicore.broadcast: true
       tukicore.socialspy: true
+      tukicore.vanish: true
+      tukicore.vanish.see: true
+      tukicore.clientcheck: true
+      tukicore.clientcheck.alerts: true
   tukicore.rank: {description: "/rank list, info y user", default: false}
   tukicore.rank.edit: {description: "/rank create, delete, prefix, suffix, perm, inherit…", default: false}
   tukicore.rank.set: {description: /rank set, default: false}
@@ -59,3 +64,8 @@ permissions:
   tukicore.gamemode.others: {description: /gm a otros, default: false}
   tukicore.fly: {description: /fly, default: false}
   tukicore.fly.others: {description: /fly a otros, default: false}
+  tukicore.vanish: {description: "/vanish (/v)", default: false}
+  tukicore.vanish.others: {description: /vanish a otros, default: false}
+  tukicore.vanish.see: {description: Ver a quienes están en vanish, default: false}
+  tukicore.clientcheck: {description: "/clientinfo (/mods): cliente y mods de un jugador", default: false}
+  tukicore.clientcheck.alerts: {description: Recibir el aviso de con qué cliente entra cada jugador, default: false}
