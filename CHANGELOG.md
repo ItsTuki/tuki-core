@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0 Legacy — 2026-11-08
+
+### Nuevo
+- **Edición Legacy** (`TukiCore-Legacy-1.1.0.jar`): funciona en Spigot, PaperSpigot y Paper desde **1.8.8 hasta 26.3**, con los mismos rangos, comandos, moderación, vanish, detección de clientes y modo dev que la edición completa.
+- Compatible con **TukiUHC Legacy** (rangos en chat, tab y sobre la cabeza).
+- El chat usa el formato clásico de Bukkit (sin hover ni clic en el nombre); la marca del cliente se lee del canal de la marca en cada versión.
+
 ## 1.1.0 — 2026-11-08
 
 ### Nuevo

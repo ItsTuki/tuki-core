@@ -1,12 +1,29 @@
 # TukiCore
 
-Núcleo administrativo para servidores **Paper 26.3** (Java 25): **rangos con prefijos**, **chat con formato**, **moderación** y utilidades de staff. Funciona solo o sobre **LuckPerms**, y es compatible con **[TukiUHC](https://github.com/ItsTuki/tuki-uhc)**.
+Núcleo administrativo para servidores **Paper 26.3** (Java 25) y, con la edición **Legacy**, de **1.8.8 a 26.3**: **rangos con prefijos**, **chat con formato**, **moderación** y utilidades de staff. Funciona solo o sobre **LuckPerms**, y es compatible con **[TukiUHC](https://github.com/ItsTuki/tuki-uhc)**.
 
 > Creado por **ItsTuki**.
 
+## Ediciones
+
+| Jar | Servidores | Java |
+|---|---|---|
+| `TukiCore-<versión>.jar` (**completa**) | Paper 26.1 – 26.3 | 25 |
+| `TukiCore-Legacy-<versión>.jar` (**Legacy**) | Spigot / PaperSpigot / Paper **1.8.8 – 26.3** | 8 o superior (lo que pida tu servidor) |
+
+La edición **Legacy** tiene los mismos rangos, comandos, moderación, vanish, detección de clientes, modo dev y textos. Diferencias:
+
+- El chat usa el formato clásico de Bukkit: sin hover ni clic sobre el nombre.
+- La marca del cliente se lee del canal `MC|Brand` (1.8–1.12) o `minecraft:brand` (1.13+); los canales de mods se detectan igual (en 1.8–1.12 también los de Forge `FML|HS`).
+- MSPT en `/dev` solo en Paper 1.15+.
+- Selectores en comandos: nombre, `@a` o `@s`. `/gmc`, `/gms`, `/gma` y `/gmsp` como atajos.
+- Con **TukiUHC Legacy** son compatibles igual que las ediciones completas (rangos en el chat, el tab y el nombre).
+
+Probada en 1.8.8, 1.12.2, 1.20.4 y 26.3, sola y junto a TukiUHC Legacy.
+
 ## Instalación
 
-1. Descarga `TukiCore-<versión>.jar` desde [Releases](../../releases) y cópialo a `plugins/`.
+1. Descarga desde [Releases](../../releases) el jar de tu edición (ver tabla) y cópialo a `plugins/`.
 2. Opcional: LuckPerms, PlaceholderAPI y TukiUHC.
 3. Reinicia. Se crean `config.yml`, `ranks.yml` y `lang/`.
 
@@ -120,5 +137,5 @@ cl.itstuki.core.api.TukiCoreAPI.isMuted(uuid);
 ## Compilar
 
 ```bash
-./gradlew build        # jar en build/libs/
+./gradlew build        # completa en build/libs/ y Legacy en legacy/build/libs/
 ```

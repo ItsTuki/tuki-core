@@ -1,0 +1,172 @@
+# TukiCore — English texts (MiniMessage format: https://docs.advntr.dev/minimessage/format)
+# <prefix> inserts the prefix. <rank> = player's rank prefix, <papi:name> = PlaceholderAPI.
+# Leave a text as "" to not send it. Don't change this number: the plugin uses it to update the file.
+lang-version: 3
+prefix: "<dark_gray>[<gradient:#55FF55:#00AAAA><bold>Core</bold></gradient><dark_gray>]</dark_gray> <aqua>»</aqua> "
+
+core:
+  no-permission: "<prefix><red>You don't have permission to use this."
+  usage: "<prefix><gray>Usage: <yellow><usage>"
+  version: "<prefix><gray>TukiCore <white>v<version></white> <dark_gray>|</dark_gray> ranks: <white><ranks></white> <dark_gray>|</dark_gray> backend: <white><backend>"
+  reloaded: "<prefix><green>Config, language and ranks reloaded."
+  player-only: "<prefix><red>Only a player can use this."
+  unknown-player: "<prefix><red>Unknown player <white><player></white>."
+  bad-duration: "<prefix><red>Invalid duration: <white><value></white> <gray>(use 30m, 2h, 7d, 1w or perm)"
+  help:
+    - "<gradient:#55FF55:#00AAAA><bold>TukiCore</bold></gradient> <gray>— commands"
+    - "<yellow>/rank</yellow> <gray>— ranks (create, prefixes, permissions, assign)"
+    - "<yellow>/msg <player> <message></yellow> <gray>· <yellow>/r</yellow> <gray>— private messages"
+    - "<yellow>/sc [message]</yellow> <gray>— staff chat (or start the message with $)"
+    - "<yellow>/mute <player> [time] [reason]</yellow> <gray>· <yellow>/unmute</yellow>"
+    - "<yellow>/mutechat</yellow> <gray>· <yellow>/clearchat</yellow> <gray>· <yellow>/broadcast</yellow> <gray>· <yellow>/socialspy</yellow>"
+    - "<yellow>/gm <mode> [player]</yellow> <gray>· <yellow>/fly [player]</yellow>"
+    - "<yellow>/v [player|list]</yellow> <gray>— vanish · <yellow>/mods [player]</yellow> <gray>— client and mods"
+    - "<yellow>/tukicore reload</yellow> <gray>— reloads everything"
+
+rank:
+  help:
+    - "<gradient:#55FF55:#00AAAA><bold>Ranks</bold></gradient>"
+    - "<yellow>/rank list</yellow> <gray>· <yellow>/rank info <rank></yellow> <gray>· <yellow>/rank user <player></yellow>"
+    - "<yellow>/rank set <player> <rank> [time]</yellow> <gray>— assign (e.g. 30d for temporary)"
+    - "<yellow>/rank create <rank> [weight]</yellow> <gray>· <yellow>/rank delete <rank></yellow>"
+    - "<yellow>/rank prefix <rank> <text|none></yellow> <gray>· <yellow>/rank suffix</yellow> <gray>· <yellow>/rank display</yellow>"
+    - "<yellow>/rank weight <rank> <weight></yellow> <gray>· <yellow>/rank color <rank> <color|none></yellow>"
+    - "<yellow>/rank perm <rank> add|remove <permission></yellow> <gray>(\"-permission\" negates it)"
+    - "<yellow>/rank inherit <rank> add|remove <rank></yellow>"
+    - "<gray>Colors with <white>&a</white>, <white>&l</white>, <white>&#FF8800</white>…"
+  list-header: "<prefix><gray>Ranks (<white><count></white>) <dark_gray>— backend: <white><backend>"
+  list-line: "<dark_gray> • </dark_gray><white><rank></white> <dark_gray>(<weight>)</dark_gray> <rank_prefix><gray>— <display>"
+  info:
+    - "<gray>Rank <white><rank></white> <dark_gray>— <display>"
+    - "<gray>Weight: <white><weight>"
+    - "<gray>Prefix: <rank_prefix><dark_gray>(<prefix_raw>)"
+    - "<gray>Suffix: <suffix>"
+    - "<gray>Chat color: <white><color>"
+    - "<gray>Inherits from: <white><inherits>"
+    - "<gray>Permissions: <white><permissions>"
+  unknown: "<prefix><red>Rank <white><rank></white> does not exist."
+  created: "<prefix><green>Rank <white><rank></white> created (weight <weight>). Set a prefix with /rank prefix <rank> &a[<rank>]"
+  cannot-create: "<prefix><red>Could not create <white><rank></white>: it exists or the name is invalid (a-z, 0-9, _ and -)."
+  deleted: "<prefix><yellow>Rank <white><rank></white> deleted."
+  cannot-delete: "<prefix><red>Cannot delete <white><rank></white> (doesn't exist or is the default rank)."
+  prefix-set: "<prefix><green>Prefix of <white><rank></white>: <rank_prefix><gray>(example)"
+  suffix-set: "<prefix><green>Suffix of <white><rank></white>: <gray>Name<suffix>"
+  display-set: "<prefix><green>Name of <white><rank></white>: <display>"
+  weight-set: "<prefix><green>Weight of <white><rank></white>: <white><weight>"
+  color-set: "<prefix><green>Chat color of <white><rank></white>: <white><color>"
+  perm-added: "<prefix><green>+ <white><permission></white> on <white><rank>"
+  perm-removed: "<prefix><yellow>- <white><permission></white> on <white><rank>"
+  inherit-added: "<prefix><green><white><rank></white> now inherits from <white><parent>"
+  inherit-removed: "<prefix><yellow><white><rank></white> no longer inherits from <white><parent>"
+  set: "<prefix><green><white><player></white> is now <display> <gray>(<time>)"
+  you-got: "<prefix><green>You now have the rank <display><green>! <gray>(<time>)"
+  user: "<prefix><white><player></white> <gray>has the rank <white><rank></white> <gray>(<time>)"
+  expired: "<prefix><yellow>Your rank <white><rank></white> expired."
+  error: "<prefix><red>Could not assign the rank. Check the console."
+
+chat:
+  name-hover: "<rank><newline><gray>Click to message <white><player>"
+  slow-down: "<prefix><red>Wait <white><seconds></white> s before writing again."
+  repeated: "<prefix><red>Don't repeat the same message."
+  mentioned: "<yellow><player> <gray>mentioned you in chat"
+
+staffchat:
+  format: "<dark_gray>[<red><bold>STAFF</bold></red>]</dark_gray> <player> <dark_gray>»</dark_gray> <aqua><message>"
+  enabled: "<prefix><green>Staff chat on: everything you write goes to staff."
+  disabled: "<prefix><yellow>Staff chat off."
+
+msg:
+  to: "<dark_gray>[<gray>You <dark_gray>→</dark_gray> <white><player></white>]</dark_gray> <gray><message>"
+  from: "<dark_gray>[<white><player></white> <dark_gray>→</dark_gray> <gray>You]</dark_gray> <gray><message>"
+  spy: "<dark_gray>[Spy] <gray><from> → <to>: <message>"
+  self: "<prefix><red>You can't message yourself."
+  muted: "<prefix><red>You are muted."
+  no-reply: "<prefix><red>Nobody to reply to."
+  spy-on: "<prefix><green>Socialspy on."
+  spy-off: "<prefix><yellow>Socialspy off."
+
+mute:
+  no-reason: "No reason"
+  broadcast: "<prefix><red><player></red> <gray>was muted for <white><time></white> by <white><by></white>. Reason: <white><reason>"
+  broadcast-perm: "<prefix><red><player></red> <gray>was permanently muted by <white><by></white>. Reason: <white><reason>"
+  you-are-muted: "<prefix><red>You are muted (<white><time></white> left). Reason: <white><reason>"
+  you-are-muted-perm: "<prefix><red>You are permanently muted. Reason: <white><reason>"
+  unmuted: "<prefix><green><player> can talk again."
+  you-were-unmuted: "<prefix><green>You can talk again."
+  not-muted: "<prefix><yellow><player> was not muted."
+
+mutechat:
+  enabled: "<prefix><red>Chat was muted by <white><player></white>."
+  disabled: "<prefix><green>Chat is open again."
+  blocked: "<prefix><red>Chat is muted."
+
+clearchat:
+  done: "<prefix><gray>Chat was cleared by <white><player></white>."
+
+broadcast:
+  format: "<dark_gray>[<gold><bold>ANNOUNCEMENT</bold></gold>]</dark_gray> <white><message>"
+
+gamemode:
+  changed: "<prefix><gray>Game mode: <white><mode>"
+  changed-other: "<prefix><gray>Game mode of <white><player></white>: <white><mode>"
+  names:
+    survival: "Survival"
+    creative: "Creative"
+    adventure: "Adventure"
+    spectator: "Spectator"
+
+fly:
+  enabled: "<prefix><green>Flight on."
+  disabled: "<prefix><yellow>Flight off."
+  enabled-other: "<prefix><green>Flight on for <white><player></white>."
+  disabled-other: "<prefix><yellow>Flight off for <white><player></white>."
+
+join:
+  message: "<dark_gray>[<green>+</green>]</dark_gray> <rank_prefix><white><player>"
+  first: "<dark_gray>[<green>+</green>]</dark_gray> <yellow>Welcome for the first time, <white><player></white>! <gray>(player #<count>)"
+  quit: "<dark_gray>[<red>-</red>]</dark_gray> <rank_prefix><white><player>"
+  # Messages sent to the player on join (empty list = none).
+  motd: []
+
+vanish:
+  enabled: "<prefix><green>You are now vanished: nobody can see you."
+  disabled: "<prefix><yellow>You are visible again."
+  still: "<prefix><gray>You are still vanished (<white>/v</white> to leave)."
+  actionbar: "<aqua>You are vanished"
+  staff-on: "<prefix><gray><white><player></white> vanished."
+  staff-off: "<prefix><gray><white><player></white> is visible again."
+  other-on: "<prefix><green><player> is now vanished."
+  other-off: "<prefix><yellow><player> is visible again."
+  list: "<prefix><gray>Vanished (<white><count></white>): <white><players>"
+  chat-blocked: "<prefix><red>You are vanished: use staff chat ($) or start with <white>!</white> to talk in chat."
+
+client:
+  alert: "<dark_gray>[<aqua>Client</aqua>]</dark_gray> <white><player></white> <gray>joined with <white><loader></white> <dark_gray>(<brand>)</dark_gray> <gray>· mods detected: <white><count>"
+  alert-suspicious: "<dark_gray>[<red><bold>⚠ Client</bold></red>]</dark_gray> <white><player></white> <gray>joined with <white><loader></white> <dark_gray>(<brand>)</dark_gray> <red>— suspicious: <flags>"
+  hover: "<gray>Brand: <white><brand><newline><gray>Mod channels: <white><mods><newline><gray>Flags: <white><flags><newline><dark_gray>It's a hint: a hacked client can disguise itself."
+  mods-line: "<gray>  Mod channels: <white><mods>"
+  list-header: "<prefix><gray>Clients of online players (<white><count></white>):"
+  no-mods: "none"
+  unknown: "Unknown"
+  flag-spoofed: "claims vanilla but has mod channels"
+  flag-no-brand: "did not send a client brand"
+  flag-keyword: "matches"
+
+dev:
+  enabled:
+    - "<prefix><gold><bold>Dev mode on</bold></gold>"
+    - "<gray>· <yellow>/uhcdev</yellow> match tools · <yellow>/dev info</yellow> server status"
+    - "<gray>· <yellow>/dev perm <player> <permission></yellow> to test ranks"
+    - "<gray>· You'll see TPS/MSPT/RAM in the action bar and console warnings and errors here."
+  disabled: "<prefix><yellow>Dev mode off."
+  actionbar: "<gold>DEV</gold> <dark_gray>|</dark_gray> <gray>TPS <white><tps></white> <dark_gray>|</dark_gray> MSPT <white><mspt></white> <dark_gray>|</dark_gray> RAM <white><ram></white>/<max> MB <dark_gray>|</dark_gray> <white><players></white> players"
+  console-warning: "<dark_gray>[<gold>Dev</gold>]</dark_gray> <yellow>⚠ <source>:</yellow> <gray><message>"
+  console-error: "<dark_gray>[<gold>Dev</gold>]</dark_gray> <red>✖ <source>:</red> <gray><message>"
+  info:
+    - "<gold>Server:</gold> <white><server>"
+    - "<gray>Minecraft <white><mc></white> · Java <white><java></white> · online-mode <white><online_mode>"
+    - "<gray>TPS <white><tps></white> · MSPT <white><mspt></white> · RAM <white><ram></white>/<max> MB"
+    - "<gray>Players <white><players></white> · worlds <white><worlds></white> · ranks: <white><backend>"
+    - "<gray>Plugins: <white><plugins>"
+  perm-yes: "<prefix><white><player></white> <green>YES</green> <gray>has <white><permission></white> <dark_gray>(set: <set>)"
+  perm-no: "<prefix><white><player></white> <red>NO</red> <gray>has <white><permission></white> <dark_gray>(set: <set>)"

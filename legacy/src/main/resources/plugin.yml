@@ -1,0 +1,89 @@
+name: TukiCore
+main: cl.itstuki.core.TukiCore
+version: ${version}
+description: "Rangos, chat y moderación para tu servidor (edición Legacy 1.8.8 - 26.3). Compatible con TukiUHC."
+api-version: "1.13"
+authors: [ItsTuki]
+website: https://github.com/ItsTuki/tuki-core
+softdepend: [LuckPerms, PlaceholderAPI]
+# TukiUHC se carga después para leer los rangos de TukiCore.
+loadbefore: [TukiUHC]
+
+commands:
+  rank: {description: Gestiona los rangos, aliases: [rango, ranks]}
+  tukicore: {description: Información de TukiCore, aliases: [core]}
+  msg: {description: Mensaje privado, aliases: [tell, w, m, whisper]}
+  r: {description: Responde el último mensaje privado, aliases: [reply]}
+  socialspy: {description: Ver los mensajes privados, aliases: [spy]}
+  staffchat: {description: Chat del staff, aliases: [sc]}
+  broadcast: {description: "Anuncio para todos (admite MiniMessage)", aliases: [bc, anuncio]}
+  clearchat: {description: Limpia el chat, aliases: [cc]}
+  mutechat: {description: Silencia el chat para todos}
+  mute: {description: Silencia a un jugador}
+  unmute: {description: Quita el silencio a un jugador}
+  vanish: {description: Te vuelve invisible para los jugadores, aliases: [v]}
+  clientinfo: {description: Con qué cliente y mods entró un jugador, aliases: [client, mods, brand]}
+  dev: {description: Modo desarrollador, aliases: [tukidev]}
+  gm: {description: Cambia el modo de juego, aliases: [gamemode, gms, gmc, gma, gmsp]}
+  fly: {description: Activa o desactiva el vuelo}
+
+permissions:
+  tukicore.admin:
+    description: Todo TukiCore.
+    default: op
+    children:
+      tukicore.staff: true
+      tukicore.rank: true
+      tukicore.rank.edit: true
+      tukicore.rank.set: true
+      tukicore.reload: true
+      tukicore.gamemode: true
+      tukicore.gamemode.others: true
+      tukicore.fly: true
+      tukicore.fly.others: true
+      tukicore.chat.color: true
+      tukicore.chat.bypass: true
+      tukicore.mute.bypass: true
+      tukicore.clearchat.bypass: true
+      tukicore.mutechat.bypass: true
+      tukicore.vanish.others: true
+  tukicore.staff:
+    description: "Moderación: staff chat, mute, mutechat, clearchat, broadcast y socialspy."
+    default: false
+    children:
+      tukicore.staffchat: true
+      tukicore.mute: true
+      tukicore.mutechat: true
+      tukicore.clearchat: true
+      tukicore.broadcast: true
+      tukicore.socialspy: true
+      tukicore.vanish: true
+      tukicore.vanish.see: true
+      tukicore.clientcheck: true
+      tukicore.clientcheck.alerts: true
+  tukicore.rank: {description: "/rank list, info y user", default: false}
+  tukicore.rank.edit: {description: "/rank create, delete, prefix, suffix, perm, inherit…", default: false}
+  tukicore.rank.set: {description: /rank set, default: false}
+  tukicore.reload: {description: /tukicore reload, default: false}
+  tukicore.msg: {description: "/msg y /r", default: true}
+  tukicore.socialspy: {description: /socialspy, default: false}
+  tukicore.staffchat: {description: /staffchat, default: false}
+  tukicore.broadcast: {description: /broadcast, default: false}
+  tukicore.clearchat: {description: /clearchat, default: false}
+  tukicore.clearchat.bypass: {description: No se le borra el chat, default: false}
+  tukicore.mutechat: {description: /mutechat, default: false}
+  tukicore.mutechat.bypass: {description: Escribir con el chat silenciado, default: false}
+  tukicore.mute: {description: "/mute y /unmute", default: false}
+  tukicore.mute.bypass: {description: No puede ser silenciado, default: false}
+  tukicore.chat.color: {description: Usar códigos & en el chat, default: false}
+  tukicore.chat.bypass: {description: Sin anti-spam ni filtro, default: false}
+  tukicore.gamemode: {description: /gm, default: false}
+  tukicore.gamemode.others: {description: /gm a otros, default: false}
+  tukicore.fly: {description: /fly, default: false}
+  tukicore.fly.others: {description: /fly a otros, default: false}
+  tukicore.vanish: {description: "/vanish (/v)", default: false}
+  tukicore.vanish.others: {description: /vanish a otros, default: false}
+  tukicore.vanish.see: {description: Ver a quienes están en vanish, default: false}
+  tukicore.clientcheck: {description: "/clientinfo (/mods): cliente y mods de un jugador", default: false}
+  tukicore.clientcheck.alerts: {description: Recibir el aviso de con qué cliente entra cada jugador, default: false}
+  tukicore.dev: {description: "Lo da el modo dev (/dev); no se asigna a mano", default: false}
