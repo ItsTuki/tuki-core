@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "cl.itstuki.core"
-version = "1.0.0"
+version = "1.1.0"
 description = "Núcleo administrativo para servidores Paper 26.3: rangos, chat y moderación."
 
 val minecraftVersion: String by project
