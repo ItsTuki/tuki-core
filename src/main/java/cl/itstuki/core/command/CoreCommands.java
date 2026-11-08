@@ -192,6 +192,16 @@ public final class CoreCommands {
                         plugin.clientCheck().show(sender(ctx), players(ctx, "jugador").getFirst())))).build(),
                 "Con qué cliente y mods entró un jugador", List.of("client", "mods", "brand"));
 
+        // ── Modo dev (solo las cuentas premium de dev-mode.players) ──
+        registrar.register(Commands.literal("dev").requires(src -> plugin.devMode().allowed(src.getSender()))
+                .executes(ok(ctx -> plugin.devMode().toggle((Player) sender(ctx))))
+                .then(Commands.literal("info").executes(ok(ctx -> plugin.devMode().info(sender(ctx)))))
+                .then(Commands.literal("perm").then(Commands.argument("jugador", ArgumentTypes.player())
+                        .then(Commands.argument("permiso", StringArgumentType.greedyString()).executes(ok(ctx ->
+                                plugin.devMode().checkPermission(sender(ctx), players(ctx, "jugador").getFirst(),
+                                        str(ctx, "permiso").trim())))))).build(),
+                "Modo desarrollador", List.of("tukidev"));
+
         // ── Utilidades ──
         registrar.register(gamemodeCommand().build(), "Cambia el modo de juego", List.of("gamemode"));
         registrar.register(Commands.literal("fly").requires(perm("tukicore.fly"))

@@ -69,6 +69,14 @@ client-check:
     - baritone
     - killaura
 
+# Modo dev (/dev): herramientas de desarrollo solo para las cuentas premium de esta lista (UUID de Mojang,
+# no el nombre). Da tukiuhc.dev (/uhcdev), TPS/MSPT/RAM en la barra y los errores de la consola en el chat.
+# No viene con OP: ningún otro jugador puede activarlo aunque sea admin.
+dev-mode:
+  enabled: false
+  players: []
+  #  - "00000000-0000-4000-0000-000000000000"
+
 join-quit:
   # Mensajes de entrada/salida con el rango (lang: join.message, join.first, join.quit).
   enabled: true

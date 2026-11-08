@@ -13,5 +13,6 @@ Primera versión.
 - Detección de clientes al entrar: Vanilla, Fabric, Forge, Lunar…, los canales de mods y alertas de sospechosos (marca oculta o nombres de clientes de hacks). `/mods <jugador>`.
 - `/gm`, `/fly`, mensajes de entrada y salida con rango y prefijo en el tab.
 - PlaceholderAPI (`%tukicore_...%`, `<papi:...>` en los textos) y API pública `TukiCoreAPI`.
+- Modo dev (`/dev`) solo para cuentas premium configuradas por UUID: `/uhcdev`, TPS/MSPT/RAM en la barra y los errores de la consola en el chat.
 - Compatible con TukiUHC.
 - Español e inglés.

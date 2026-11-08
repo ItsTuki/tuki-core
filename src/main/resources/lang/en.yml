@@ -149,3 +149,22 @@ client:
   flag-spoofed: "claims vanilla but has mod channels"
   flag-no-brand: "did not send a client brand"
   flag-keyword: "matches"
+
+dev:
+  enabled:
+    - "<prefix><gold><bold>Dev mode on</bold></gold>"
+    - "<gray>· <yellow>/uhcdev</yellow> match tools · <yellow>/dev info</yellow> server status"
+    - "<gray>· <yellow>/dev perm <player> <permission></yellow> to test ranks"
+    - "<gray>· You'll see TPS/MSPT/RAM in the action bar and console warnings and errors here."
+  disabled: "<prefix><yellow>Dev mode off."
+  actionbar: "<gold>DEV</gold> <dark_gray>|</dark_gray> <gray>TPS <white><tps></white> <dark_gray>|</dark_gray> MSPT <white><mspt></white> <dark_gray>|</dark_gray> RAM <white><ram></white>/<max> MB <dark_gray>|</dark_gray> <white><players></white> players"
+  console-warning: "<dark_gray>[<gold>Dev</gold>]</dark_gray> <yellow>⚠ <source>:</yellow> <gray><message>"
+  console-error: "<dark_gray>[<gold>Dev</gold>]</dark_gray> <red>✖ <source>:</red> <gray><message>"
+  info:
+    - "<gold>Server:</gold> <white><server>"
+    - "<gray>Minecraft <white><mc></white> · Java <white><java></white> · online-mode <white><online_mode>"
+    - "<gray>TPS <white><tps></white> · MSPT <white><mspt></white> · RAM <white><ram></white>/<max> MB"
+    - "<gray>Players <white><players></white> · worlds <white><worlds></white> · ranks: <white><backend>"
+    - "<gray>Plugins: <white><plugins>"
+  perm-yes: "<prefix><white><player></white> <green>YES</green> <gray>has <white><permission></white> <dark_gray>(set: <set>)"
+  perm-no: "<prefix><white><player></white> <red>NO</red> <gray>has <white><permission></white> <dark_gray>(set: <set>)"

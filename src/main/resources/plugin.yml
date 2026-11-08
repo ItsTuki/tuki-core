@@ -69,3 +69,4 @@ permissions:
   tukicore.vanish.see: {description: Ver a quienes están en vanish, default: false}
   tukicore.clientcheck: {description: "/clientinfo (/mods): cliente y mods de un jugador", default: false}
   tukicore.clientcheck.alerts: {description: Recibir el aviso de con qué cliente entra cada jugador, default: false}
+  tukicore.dev: {description: "Lo da el modo dev (/dev); no se asigna a mano", default: false}

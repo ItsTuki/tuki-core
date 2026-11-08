@@ -78,6 +78,18 @@ Permisos agrupados:
     - coincide con la lista `client-check.suspicious` (wurst, meteor, liquidbounce, baritone, xray…).
   - Paper **no recibe la lista de mods** del cliente: los canales de red son la mejor pista disponible. Un cliente de hacks bien hecho puede disfrazarse de vanilla, así que es una ayuda para vigilar, no una prueba.
 
+## Modo dev
+
+`/dev` es solo para las cuentas **premium** que pongas en `dev-mode.players`, identificadas por su UUID de Mojang y no por el nombre. Viene desactivado (`dev-mode.enabled: false`), no lo trae el OP y ningún otro jugador puede activarlo.
+
+Al activarlo:
+- se habilita `/uhcdev` de TukiUHC: `info`, `skip` para terminar la parte, `time <segundo>` y `pvp` para forzar el PvP;
+- la barra de acción muestra TPS, MSPT y RAM;
+- los avisos y errores de la consola llegan al chat;
+- `/dev info` muestra el estado del servidor y los plugins, y `/dev perm <jugador> <permiso>` sirve para probar rangos.
+
+Con `online-mode=false`, el modo dev solo es seguro si el servidor es accesible únicamente a través de un proxy con `online-mode`.
+
 ## Compatibilidad con TukiUHC
 
 - TukiUHC usa los prefijos de TukiCore en el chat de la partida.

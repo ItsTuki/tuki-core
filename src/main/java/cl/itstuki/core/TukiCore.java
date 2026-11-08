@@ -12,6 +12,7 @@ import cl.itstuki.core.hook.PlaceholderHook;
 import cl.itstuki.core.lang.Lang;
 import cl.itstuki.core.rank.RankManager;
 import cl.itstuki.core.staff.ClientCheck;
+import cl.itstuki.core.staff.DevMode;
 import cl.itstuki.core.staff.VanishManager;
 import cl.itstuki.core.util.Credits;
 import cl.itstuki.core.util.Text;
@@ -30,6 +31,7 @@ public final class TukiCore extends JavaPlugin {
     private PrivateMessages messages;
     private VanishManager vanish;
     private ClientCheck clientCheck;
+    private DevMode devMode;
     private final PlaceholderHook placeholders = new PlaceholderHook();
 
     @Override
@@ -45,6 +47,7 @@ public final class TukiCore extends JavaPlugin {
         messages = new PrivateMessages(this);
         vanish = new VanishManager(this);
         clientCheck = new ClientCheck(this);
+        devMode = new DevMode(this);
         ranks.startBackend();
         TukiCoreAPI.init(this);
         placeholders.enable(this);
@@ -58,6 +61,8 @@ public final class TukiCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(vanish, this);
         getServer().getPluginManager().registerEvents(clientCheck, this);
         vanish.start();
+        getServer().getPluginManager().registerEvents(devMode, this);
+        devMode.start();
         tab.start();
 
         CoreCommands commands = new CoreCommands(this);
@@ -67,6 +72,9 @@ public final class TukiCore extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        if (devMode != null) {
+            devMode.stop();
+        }
         placeholders.disable();
         if (ranks != null) {
             ranks.stopBackend();
@@ -92,4 +100,5 @@ public final class TukiCore extends JavaPlugin {
     public PrivateMessages messages() { return messages; }
     public VanishManager vanish() { return vanish; }
     public ClientCheck clientCheck() { return clientCheck; }
+    public DevMode devMode() { return devMode; }
 }
