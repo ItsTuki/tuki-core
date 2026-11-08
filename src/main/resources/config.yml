@@ -84,6 +84,8 @@ join-quit:
 tab:
   # Prefijo y sufijo del rango en el tab. Si otro plugin cambia el nombre (TukiUHC en partida), se respeta.
   rank-prefix: true
+  # Prefijo del rango sobre la cabeza (tab ordenado por rango). Con TukiUHC lo hace TukiUHC.
+  nametag-prefix: true
   # Cabecera y pie del tab. Déjalo en false si usas TukiUHC (él pone los suyos).
   header-footer:
     enabled: false

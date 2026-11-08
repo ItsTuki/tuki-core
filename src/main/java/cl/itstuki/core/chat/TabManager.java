@@ -42,6 +42,7 @@ public final class TabManager {
     }
 
     public void refresh(Player player) {
+        nametag(player);
         if (!enabled()) {
             return;
         }
@@ -62,5 +63,49 @@ public final class TabManager {
 
     public void forget(Player player) {
         applied.remove(player.getUniqueId());
+        org.bukkit.scoreboard.Team team = Bukkit.getScoreboardManager().getMainScoreboard().getEntryTeam(player.getName());
+        if (team != null && team.getName().startsWith("tc_")) {
+            team.removeEntry(player.getName());
+        }
+    }
+
+    /**
+     * Prefijo del rango sobre la cabeza (equipos del scoreboard principal, ordenados por peso para el tab).
+     * Con TukiUHC no se hace: él usa scoreboards por jugador y pone el rango en sus propios equipos.
+     */
+    private void nametag(Player player) {
+        if (!plugin.getConfig().getBoolean("tab.nametag-prefix", true)
+                || Bukkit.getPluginManager().isPluginEnabled("TukiUHC")) {
+            return;
+        }
+        org.bukkit.scoreboard.Scoreboard main = Bukkit.getScoreboardManager().getMainScoreboard();
+        org.bukkit.scoreboard.Team current = main.getEntryTeam(player.getName());
+        if (current != null && !current.getName().startsWith("tc_")) {
+            return; // Está en un equipo de otro plugin o de /team.
+        }
+        String prefix = plugin.ranks().prefix(player);
+        int weight = Math.max(0, Math.min(9999, plugin.ranks().rankOf(player).weight()));
+        String id = "tc_" + String.format("%04d", 9999 - weight) + "_" + Integer.toHexString(prefix.hashCode());
+        org.bukkit.scoreboard.Team team = main.getTeam(id);
+        if (team == null) {
+            team = main.registerNewTeam(id);
+            team.prefix(Text.legacy(prefix));
+            team.color(NamedTextColor.WHITE);
+        }
+        if (current != team) {
+            team.addEntry(player.getName());
+            if (current != null && current.getEntries().isEmpty()) {
+                current.unregister();
+            }
+        }
+    }
+
+    /** Al apagar: quitar los equipos de rango del scoreboard principal. */
+    public void cleanup() {
+        for (org.bukkit.scoreboard.Team team : java.util.Set.copyOf(Bukkit.getScoreboardManager().getMainScoreboard().getTeams())) {
+            if (team.getName().startsWith("tc_")) {
+                team.unregister();
+            }
+        }
     }
 }

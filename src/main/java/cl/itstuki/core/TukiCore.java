@@ -76,6 +76,9 @@ public final class TukiCore extends JavaPlugin {
             devMode.stop();
         }
         placeholders.disable();
+        if (tab != null) {
+            tab.cleanup();
+        }
         if (ranks != null) {
             ranks.stopBackend();
         }
