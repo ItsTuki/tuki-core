@@ -26,6 +26,7 @@ commands:
   dev: {description: Modo desarrollador, aliases: [tukidev]}
   gm: {description: Cambia el modo de juego, aliases: [gamemode, gms, gmc, gma, gmsp]}
   fly: {description: Activa o desactiva el vuelo}
+  invsee: {description: "Ver (y con permiso editar) el inventario de un jugador", aliases: [inv, verinv]}
 
 permissions:
   tukicore.admin:
@@ -47,6 +48,7 @@ permissions:
       tukicore.clearchat.bypass: true
       tukicore.mutechat.bypass: true
       tukicore.vanish.others: true
+      tukicore.invsee.edit: true
   tukicore.staff:
     description: "Moderación: staff chat, mute, mutechat, clearchat, broadcast y socialspy."
     default: false
@@ -61,6 +63,7 @@ permissions:
       tukicore.vanish.see: true
       tukicore.clientcheck: true
       tukicore.clientcheck.alerts: true
+      tukicore.invsee: true
   tukicore.rank: {description: "/rank list, info y user", default: false}
   tukicore.rank.edit: {description: "/rank create, delete, prefix, suffix, perm, inherit…", default: false}
   tukicore.rank.set: {description: /rank set, default: false}
@@ -86,4 +89,7 @@ permissions:
   tukicore.vanish.see: {description: Ver a quienes están en vanish, default: false}
   tukicore.clientcheck: {description: "/clientinfo (/mods): cliente y mods de un jugador", default: false}
   tukicore.clientcheck.alerts: {description: Recibir el aviso de con qué cliente entra cada jugador, default: false}
+  tukicore.invsee: {description: "/invsee: ver el inventario y el cofre de ender de un jugador", default: false}
+  tukicore.invsee.edit: {description: "/invsee: además poder cambiar sus ítems", default: false}
+  tukicore.invsee.exempt: {description: "Nadie sin este permiso puede editar tu inventario", default: false}
   tukicore.dev: {description: "Lo da el modo dev (/dev); no se asigna a mano", default: false}

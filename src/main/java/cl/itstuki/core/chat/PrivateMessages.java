@@ -41,8 +41,11 @@ public final class PrivateMessages {
             plugin.lang().send(from, "msg.muted");
             return;
         }
-        plugin.lang().send(from, "msg.to", Lang.p("player", to.getName()), Lang.p("message", message));
-        plugin.lang().send(to, "msg.from", Lang.p("player", from.getName()), Lang.p("message", message));
+        // Con permiso de color, los códigos & funcionan también en privado.
+        net.kyori.adventure.text.minimessage.tag.resolver.TagResolver text = from.hasPermission("tukicore.chat.color")
+                ? Lang.c("message", cl.itstuki.core.util.Text.legacy(message)) : Lang.p("message", message);
+        plugin.lang().send(from, "msg.to", Lang.p("player", to.getName()), text);
+        plugin.lang().send(to, "msg.from", Lang.p("player", from.getName()), text);
         lastPartner.put(from.getUniqueId(), to.getUniqueId());
         lastPartner.put(to.getUniqueId(), from.getUniqueId());
         for (UUID spy : spies) {

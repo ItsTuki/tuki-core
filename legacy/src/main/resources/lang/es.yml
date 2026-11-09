@@ -1,7 +1,7 @@
 # TukiCore — textos en español (formato MiniMessage: https://docs.advntr.dev/minimessage/format)
 # <prefix> inserta el prefijo. <rank> = prefijo del rango del jugador, <papi:nombre> = PlaceholderAPI.
 # Deja un texto en "" para no enviarlo. No cambies este número: el plugin lo usa para actualizar el archivo.
-lang-version: 3
+lang-version: 4
 prefix: "<dark_gray>[<gradient:#55FF55:#00AAAA><bold>Core</bold></gradient><dark_gray>]</dark_gray> <aqua>»</aqua> "
 
 core:
@@ -21,6 +21,7 @@ core:
     - "<yellow>/mutechat</yellow> <gray>· <yellow>/clearchat</yellow> <gray>· <yellow>/broadcast</yellow> <gray>· <yellow>/socialspy</yellow>"
     - "<yellow>/gm <modo> [jugador]</yellow> <gray>· <yellow>/fly [jugador]</yellow>"
     - "<yellow>/v [jugador|list]</yellow> <gray>— vanish · <yellow>/mods [jugador]</yellow> <gray>— cliente y mods"
+    - "<yellow>/invsee <jugador> [ender]</yellow> <gray>— ver o editar su inventario"
     - "<yellow>/tukicore reload</yellow> <gray>— recarga todo"
 
 rank:
@@ -102,6 +103,13 @@ mutechat:
 
 clearchat:
   done: "<prefix><gray>El chat fue limpiado por <white><player></white>."
+
+invsee:
+  self: "<prefix><gray>Ese es tu propio inventario: ábrelo con la tecla E."
+  inventory: "inventario"
+  ender: "cofre de ender"
+  opened-edit: "<prefix><gray>Abriste el <type> de <white><player></white>. <green>Puedes editarlo.</green>"
+  opened-view: "<prefix><gray>Abriste el <type> de <white><player></white>. <yellow>Solo lectura.</yellow>"
 
 broadcast:
   format: "<dark_gray>[<gold><bold>ANUNCIO</bold></gold>]</dark_gray> <white><message>"

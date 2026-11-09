@@ -30,6 +30,7 @@ public final class TukiCore extends JavaPlugin {
     private StaffChat staffChat;
     private PrivateMessages messages;
     private VanishManager vanish;
+    private final cl.itstuki.core.staff.InventoryViewer inventories = new cl.itstuki.core.staff.InventoryViewer(this);
     private ClientCheck clientCheck;
     private DevMode devMode;
     private final PlaceholderHook placeholders = new PlaceholderHook();
@@ -59,6 +60,7 @@ public final class TukiCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ChatListener(this), this);
         getServer().getPluginManager().registerEvents(new JoinListener(this), this);
         getServer().getPluginManager().registerEvents(vanish, this);
+        getServer().getPluginManager().registerEvents(inventories, this);
         getServer().getPluginManager().registerEvents(clientCheck, this);
         vanish.start();
         getServer().getPluginManager().registerEvents(devMode, this);
@@ -102,6 +104,7 @@ public final class TukiCore extends JavaPlugin {
     public StaffChat staffChat() { return staffChat; }
     public PrivateMessages messages() { return messages; }
     public VanishManager vanish() { return vanish; }
+    public cl.itstuki.core.staff.InventoryViewer inventories() { return inventories; }
     public ClientCheck clientCheck() { return clientCheck; }
     public DevMode devMode() { return devMode; }
 }

@@ -35,7 +35,7 @@ public final class StaffChat {
         var name = sender instanceof Player p
                 ? Text.legacy(plugin.ranks().prefix(p)).append(net.kyori.adventure.text.Component.text(p.getName()))
                 : net.kyori.adventure.text.Component.text("Consola");
-        var line = plugin.lang().get("staffchat.format", Lang.c("player", name), Lang.p("message", message));
+        var line = plugin.lang().get("staffchat.format", Lang.c("player", name), Lang.c("message", Text.legacy(message)));
         for (Player staff : Bukkit.getOnlinePlayers()) {
             if (staff.hasPermission("tukicore.staffchat")) {
                 staff.sendMessage(line);

@@ -27,7 +27,7 @@ import org.bukkit.entity.Player;
 /** Comandos de TukiCore (edición Legacy: declarados en plugin.yml). */
 public final class CoreCommands implements CommandExecutor, TabCompleter {
     private static final List<String> COMMANDS = Arrays.asList("rank", "tukicore", "msg", "r", "socialspy", "staffchat",
-            "broadcast", "clearchat", "mutechat", "mute", "unmute", "vanish", "clientinfo", "dev", "gm", "fly");
+            "broadcast", "clearchat", "mutechat", "mute", "unmute", "vanish", "clientinfo", "dev", "gm", "fly", "invsee");
     private static final List<String> RANK_SUBS = Arrays.asList("list", "info", "create", "delete", "prefix", "suffix",
             "display", "weight", "color", "perm", "inherit", "set", "user");
     private final TukiCore plugin;
@@ -170,7 +170,7 @@ public final class CoreCommands implements CommandExecutor, TabCompleter {
                     if (args.length == 0) {
                         usage(sender, "/broadcast <mensaje>");
                     } else {
-                        Component text = lang().format(join(args, 0), null);
+                        Component text = lang().format(Text.toMini(join(args, 0)), null);
                         plugin.adventure().all().sendMessage(lang().get("broadcast.format", Lang.c("message", text)));
                     }
                 }
@@ -227,6 +227,22 @@ public final class CoreCommands implements CommandExecutor, TabCompleter {
                 return true;
             case "dev":
                 dev(sender, args);
+                return true;
+            case "invsee":
+                if (allowed(sender, "tukicore.invsee")) {
+                    Player viewer = self(sender);
+                    if (viewer == null) {
+                        return true;
+                    }
+                    if (args.length == 0) {
+                        usage(sender, "/invsee <jugador> [ender]");
+                        return true;
+                    }
+                    Player target = target(sender, args[0]);
+                    if (target != null) {
+                        plugin.inventories().open(viewer, target, args.length > 1 && args[1].equalsIgnoreCase("ender"));
+                    }
+                }
                 return true;
             case "gm":
                 if (allowed(sender, "tukicore.gamemode")) {
@@ -773,6 +789,13 @@ public final class CoreCommands implements CommandExecutor, TabCompleter {
                 } else if (sender.hasPermission("tukicore.gamemode.others")) {
                     options.addAll(visibleNames(sender));
                     options.add("@a");
+                }
+                break;
+            case "invsee":
+                if (n == 1 && sender.hasPermission("tukicore.invsee")) {
+                    options.addAll(visibleNames(sender));
+                } else if (n == 2) {
+                    options.add("ender");
                 }
                 break;
             case "fly":

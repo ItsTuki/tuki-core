@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.2.0 — 2026-11-08
+
+Para las dos ediciones (completa y Legacy).
+
+### Nuevo
+- **`/invsee <jugador> [ender]`** (`/inv`): abre el inventario o el cofre de ender de un jugador. Con `tukicore.invsee.edit` los cambios son en vivo; sin él, solo se mira. `tukicore.invsee.exempt` protege tu inventario de quien no lo tenga.
+
+### Arreglos
+- `/broadcast` (`/anuncio`, `/bc`) acepta códigos `&` y `&#RRGGBB` además de MiniMessage: `&l&6Hola` sale en negrita y dorado.
+- El staff chat y los mensajes privados (con `tukicore.chat.color`) también aceptan códigos `&`.
+
 ## 1.1.0 Legacy — 2026-11-08
 
 ### Nuevo

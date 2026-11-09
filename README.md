@@ -65,11 +65,12 @@ Vienen 7 rangos de ejemplo en `ranks.yml`: owner, admin, mod, helper, mvp, vip y
 | Comando | Permiso |
 |---|---|
 | `/mute <jugador> [tiempo] [razón]` · `/unmute <jugador>` | `tukicore.mute` |
-| `/mutechat` · `/clearchat` · `/broadcast <mensaje>` | `tukicore.mutechat` · `tukicore.clearchat` · `tukicore.broadcast` |
+| `/mutechat` · `/clearchat` · `/broadcast <mensaje>` (`/anuncio`; códigos `&` y MiniMessage) | `tukicore.mutechat` · `tukicore.clearchat` · `tukicore.broadcast` |
 | `/staffchat` (`/sc`) · `/socialspy` | `tukicore.staffchat` · `tukicore.socialspy` |
 | `/gm <modo> [jugador]` · `/fly [jugador]` | `tukicore.gamemode(.others)` · `tukicore.fly(.others)` |
 | `/vanish` (`/v`) · `/v <jugador>` · `/v list` | `tukicore.vanish` · `tukicore.vanish.others` (ver: `tukicore.vanish.see`) |
 | `/mods [jugador\|all]` (`/clientinfo`) | `tukicore.clientcheck` (avisos: `tukicore.clientcheck.alerts`) |
+| `/invsee <jugador> [ender]` (`/inv`) | `tukicore.invsee` (editar: `tukicore.invsee.edit`; protegido: `tukicore.invsee.exempt`) |
 | `/msg` · `/r` | `tukicore.msg` (todos) |
 | `/tukicore [reload\|help]` | `tukicore.reload` |
 

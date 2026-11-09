@@ -127,9 +127,14 @@ public final class CoreCommands {
                 "Chat del staff", List.of("sc"));
         registrar.register(Commands.literal("broadcast").requires(perm("tukicore.broadcast"))
                 .then(Commands.argument("mensaje", StringArgumentType.greedyString()).executes(ok(ctx -> {
-                    Component text = lang().format(str(ctx, "mensaje"), null);
+                    Component text = lang().format(Text.toMini(str(ctx, "mensaje")), null);
                     Bukkit.getServer().sendMessage(lang().get("broadcast.format", Lang.c("message", text)));
-                }))).build(), "Anuncio para todos (admite MiniMessage)", List.of("bc", "anuncio"));
+                }))).build(), "Anuncio para todos (códigos & y MiniMessage)", List.of("bc", "anuncio"));
+        registrar.register(Commands.literal("invsee").requires(perm("tukicore.invsee"))
+                .then(Commands.argument("jugador", ArgumentTypes.player())
+                        .executes(ok(ctx -> invsee(ctx, false)))
+                        .then(Commands.literal("ender").executes(ok(ctx -> invsee(ctx, true))))).build(),
+                "Ver (y con permiso editar) el inventario de un jugador", List.of("inv", "verinv"));
         registrar.register(Commands.literal("clearchat").requires(perm("tukicore.clearchat")).executes(ok(ctx -> {
             Component blank = Component.text(" ");
             for (Player p : Bukkit.getOnlinePlayers()) {
@@ -508,5 +513,14 @@ public final class CoreCommands {
                         Bukkit.getScheduler().runTaskLater(plugin, () -> plugin.tab().refresh(online), 10L);
                     }
                 }));
+    }
+
+    private void invsee(com.mojang.brigadier.context.CommandContext<CommandSourceStack> ctx, boolean ender)
+            throws com.mojang.brigadier.exceptions.CommandSyntaxException {
+        if (!(sender(ctx) instanceof Player viewer)) {
+            lang().send(sender(ctx), "core.player-only");
+            return;
+        }
+        plugin.inventories().open(viewer, players(ctx, "jugador").get(0), ender);
     }
 }

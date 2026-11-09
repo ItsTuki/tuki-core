@@ -1,7 +1,7 @@
 # TukiCore — English texts (MiniMessage format: https://docs.advntr.dev/minimessage/format)
 # <prefix> inserts the prefix. <rank> = player's rank prefix, <papi:name> = PlaceholderAPI.
 # Leave a text as "" to not send it. Don't change this number: the plugin uses it to update the file.
-lang-version: 3
+lang-version: 4
 prefix: "<dark_gray>[<gradient:#55FF55:#00AAAA><bold>Core</bold></gradient><dark_gray>]</dark_gray> <aqua>»</aqua> "
 
 core:
@@ -21,6 +21,7 @@ core:
     - "<yellow>/mutechat</yellow> <gray>· <yellow>/clearchat</yellow> <gray>· <yellow>/broadcast</yellow> <gray>· <yellow>/socialspy</yellow>"
     - "<yellow>/gm <mode> [player]</yellow> <gray>· <yellow>/fly [player]</yellow>"
     - "<yellow>/v [player|list]</yellow> <gray>— vanish · <yellow>/mods [player]</yellow> <gray>— client and mods"
+    - "<yellow>/invsee <player> [ender]</yellow> <gray>— view or edit their inventory"
     - "<yellow>/tukicore reload</yellow> <gray>— reloads everything"
 
 rank:
@@ -102,6 +103,13 @@ mutechat:
 
 clearchat:
   done: "<prefix><gray>Chat was cleared by <white><player></white>."
+
+invsee:
+  self: "<prefix><gray>That's your own inventory: open it with E."
+  inventory: "inventory"
+  ender: "ender chest"
+  opened-edit: "<prefix><gray>Opened <white><player></white>'s <type>. <green>You can edit it.</green>"
+  opened-view: "<prefix><gray>Opened <white><player></white>'s <type>. <yellow>Read only.</yellow>"
 
 broadcast:
   format: "<dark_gray>[<gold><bold>ANNOUNCEMENT</bold></gold>]</dark_gray> <white><message>"
