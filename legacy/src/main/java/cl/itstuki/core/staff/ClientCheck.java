@@ -244,6 +244,11 @@ public final class ClientCheck implements Listener, PluginMessageListener {
         for (Player staff : Bukkit.getOnlinePlayers()) {
             if (staff.hasPermission("tukicore.clientcheck.alerts")) {
                 plugin.msg(staff, line);
+                if (info.suspicious()) {
+                    plugin.lunar().notify(staff, plugin.lang().get("lunar.alert-title"),
+                            plugin.lang().get("lunar.alert-desc", Lang.p("player", player.getName()),
+                                    Lang.p("loader", info.loader()), Lang.p("flags", shorten(String.join(", ", info.flags())))), 8);
+                }
             }
         }
         plugin.getLogger().info("Cliente de " + player.getName() + ": " + info.loader() + " (marca \"" + info.brand() + "\")"

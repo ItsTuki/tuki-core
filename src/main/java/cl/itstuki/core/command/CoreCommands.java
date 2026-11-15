@@ -135,6 +135,17 @@ public final class CoreCommands {
                         .executes(ok(ctx -> invsee(ctx, false)))
                         .then(Commands.literal("ender").executes(ok(ctx -> invsee(ctx, true))))).build(),
                 "Ver (y con permiso editar) el inventario de un jugador", List.of("inv", "verinv"));
+        registrar.register(Commands.literal("lunar").requires(perm("tukicore.lunar"))
+                .executes(ok(ctx -> plugin.lunar().status(sender(ctx))))
+                .then(Commands.literal("staff").requires(perm("tukicore.lunar.staff"))
+                        .executes(ok(ctx -> lunarSelf(ctx, null)))
+                        .then(Commands.literal("on").executes(ok(ctx -> lunarSelf(ctx, true))))
+                        .then(Commands.literal("off").executes(ok(ctx -> lunarSelf(ctx, false))))
+                        .then(Commands.argument("jugador", ArgumentTypes.player()).requires(perm("tukicore.lunar.others"))
+                                .executes(ok(ctx -> lunarOther(ctx, null)))
+                                .then(Commands.literal("on").executes(ok(ctx -> lunarOther(ctx, true))))
+                                .then(Commands.literal("off").executes(ok(ctx -> lunarOther(ctx, false)))))).build(),
+                "Lunar Client: quién lo usa y mods de staff (XRay, nametags, bhop)", List.of("apollo"));
         registrar.register(Commands.literal("clearchat").requires(perm("tukicore.clearchat")).executes(ok(ctx -> {
             Component blank = Component.text(" ");
             for (Player p : Bukkit.getOnlinePlayers()) {
@@ -522,5 +533,18 @@ public final class CoreCommands {
             return;
         }
         plugin.inventories().open(viewer, players(ctx, "jugador").get(0), ender);
+    }
+
+    private void lunarSelf(com.mojang.brigadier.context.CommandContext<CommandSourceStack> ctx, Boolean on) {
+        if (!(sender(ctx) instanceof Player self)) {
+            lang().send(sender(ctx), "core.player-only");
+            return;
+        }
+        plugin.lunar().toggle(self, self, on);
+    }
+
+    private void lunarOther(com.mojang.brigadier.context.CommandContext<CommandSourceStack> ctx, Boolean on)
+            throws com.mojang.brigadier.exceptions.CommandSyntaxException {
+        plugin.lunar().toggle(sender(ctx), players(ctx, "jugador").get(0), on);
     }
 }

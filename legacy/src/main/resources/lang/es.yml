@@ -22,6 +22,7 @@ core:
     - "<yellow>/gm <modo> [jugador]</yellow> <gray>· <yellow>/fly [jugador]</yellow>"
     - "<yellow>/v [jugador|list]</yellow> <gray>— vanish · <yellow>/mods [jugador]</yellow> <gray>— cliente y mods"
     - "<yellow>/invsee <jugador> [ender]</yellow> <gray>— ver o editar su inventario"
+    - "<yellow>/lunar [staff [jugador] [on|off]]</yellow> <gray>— Lunar Client y sus mods de staff (XRay…)"
     - "<yellow>/tukicore reload</yellow> <gray>— recarga todo"
 
 rank:
@@ -178,3 +179,18 @@ dev:
     - "<gray>Plugins: <white><plugins>"
   perm-yes: "<prefix><white><player></white> <green>SÍ</green> <gray>tiene <white><permission></white> <dark_gray>(definido: <set>)"
   perm-no: "<prefix><white><player></white> <red>NO</red> <gray>tiene <white><permission></white> <dark_gray>(definido: <set>)"
+
+lunar:
+  status: "<prefix><gray>Con Lunar Client: <white><count></white> <dark_gray>·</dark_gray> <white><players></white> <dark_gray>(★ = mods de staff)"
+  disabled: "<prefix><red>La integración con Lunar Client está apagada (lunar.enabled en config.yml)."
+  not-lunar: "<prefix><red><player> no está usando Lunar Client."
+  staff-on: "<prefix><green>Mods de staff de Lunar activados: <white><mods></white>. <gray>Míralos en el menú de mods (Right Shift)."
+  staff-off: "<prefix><gray>Mods de staff de Lunar <red>desactivados</red>."
+  staff-on-other: "<prefix><gray>Mods de staff de Lunar <green>activados</green> para <white><player></white>."
+  staff-off-other: "<prefix><gray>Mods de staff de Lunar <red>desactivados</red> para <white><player></white>."
+  alert-title: "<red><bold>⚠ Cliente sospechoso"
+  alert-desc: "<white><player></white> <gray>entró con <white><loader></white><newline><red><flags>"
+  mods:
+    xray: "XRay"
+    bhop: "Bunny hop"
+    nametags: "Nametags"

@@ -22,6 +22,7 @@ commands:
   mute: {description: Silencia a un jugador}
   unmute: {description: Quita el silencio a un jugador}
   vanish: {description: Te vuelve invisible para los jugadores, aliases: [v]}
+  lunar: {description: "Lunar Client: quién lo usa y mods de staff", aliases: [apollo]}
   clientinfo: {description: Con qué cliente y mods entró un jugador, aliases: [client, mods, brand]}
   dev: {description: Modo desarrollador, aliases: [tukidev]}
   gm: {description: Cambia el modo de juego, aliases: [gamemode, gms, gmc, gma, gmsp]}
@@ -49,6 +50,7 @@ permissions:
       tukicore.mutechat.bypass: true
       tukicore.vanish.others: true
       tukicore.invsee.edit: true
+      tukicore.lunar.others: true
   tukicore.staff:
     description: "Moderación: staff chat, mute, mutechat, clearchat, broadcast y socialspy."
     default: false
@@ -64,6 +66,11 @@ permissions:
       tukicore.clientcheck: true
       tukicore.clientcheck.alerts: true
       tukicore.invsee: true
+      tukicore.lunar: true
+      tukicore.lunar.staff: true
+  tukicore.lunar: {description: "/lunar: quién usa Lunar Client", default: false}
+  tukicore.lunar.staff: {description: "/lunar staff: mods de staff de Lunar (XRay, nametags, bhop)", default: false}
+  tukicore.lunar.others: {description: "/lunar staff <jugador>: activarlos a otro", default: false}
   tukicore.rank: {description: "/rank list, info y user", default: false}
   tukicore.rank.edit: {description: "/rank create, delete, prefix, suffix, perm, inherit…", default: false}
   tukicore.rank.set: {description: /rank set, default: false}

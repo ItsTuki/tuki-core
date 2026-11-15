@@ -87,6 +87,7 @@ public final class VanishManager implements Listener {
         }
         save();
         apply(player);
+        plugin.lunar().onVanish(player, vanish);
         plugin.lang().send(player, vanish ? "vanish.enabled" : "vanish.disabled");
         if (!vanish) {
             player.sendActionBar(net.kyori.adventure.text.Component.empty());

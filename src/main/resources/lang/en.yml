@@ -20,6 +20,7 @@ core:
     - "<yellow>/gm <mode> [player]</yellow> <gray>· <yellow>/fly [player]</yellow>"
     - "<yellow>/v [player|list]</yellow> <gray>— vanish · <yellow>/mods [player]</yellow> <gray>— client and mods"
     - "<yellow>/invsee <player> [ender]</yellow> <gray>— view or edit their inventory"
+    - "<yellow>/lunar [staff [player] [on|off]]</yellow> <gray>— Lunar Client and its staff mods (XRay…)"
     - "<yellow>/tukicore reload</yellow> <gray>— reloads everything"
 
 rank:
@@ -176,3 +177,18 @@ dev:
     - "<gray>Plugins: <white><plugins>"
   perm-yes: "<prefix><white><player></white> <green>YES</green> <gray>has <white><permission></white> <dark_gray>(set: <set>)"
   perm-no: "<prefix><white><player></white> <red>NO</red> <gray>has <white><permission></white> <dark_gray>(set: <set>)"
+
+lunar:
+  status: "<prefix><gray>On Lunar Client: <white><count></white> <dark_gray>·</dark_gray> <white><players></white> <dark_gray>(★ = staff mods)"
+  disabled: "<prefix><red>The Lunar Client integration is off (lunar.enabled in config.yml)."
+  not-lunar: "<prefix><red><player> isn't using Lunar Client."
+  staff-on: "<prefix><green>Lunar staff mods enabled: <white><mods></white>. <gray>Find them in the mods menu (Right Shift)."
+  staff-off: "<prefix><gray>Lunar staff mods <red>disabled</red>."
+  staff-on-other: "<prefix><gray>Lunar staff mods <green>enabled</green> for <white><player></white>."
+  staff-off-other: "<prefix><gray>Lunar staff mods <red>disabled</red> for <white><player></white>."
+  alert-title: "<red><bold>⚠ Suspicious client"
+  alert-desc: "<white><player></white> <gray>joined with <white><loader></white><newline><red><flags>"
+  mods:
+    xray: "XRay"
+    bhop: "Bunny hop"
+    nametags: "Nametags"

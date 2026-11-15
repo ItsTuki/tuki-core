@@ -27,7 +27,7 @@ import org.bukkit.entity.Player;
 /** Comandos de TukiCore (edición Legacy: declarados en plugin.yml). */
 public final class CoreCommands implements CommandExecutor, TabCompleter {
     private static final List<String> COMMANDS = Arrays.asList("rank", "tukicore", "msg", "r", "socialspy", "staffchat",
-            "broadcast", "clearchat", "mutechat", "mute", "unmute", "vanish", "clientinfo", "dev", "gm", "fly", "invsee");
+            "broadcast", "clearchat", "mutechat", "mute", "unmute", "vanish", "clientinfo", "dev", "gm", "fly", "invsee", "lunar");
     private static final List<String> RANK_SUBS = Arrays.asList("list", "info", "create", "delete", "prefix", "suffix",
             "display", "weight", "color", "perm", "inherit", "set", "user");
     private final TukiCore plugin;
@@ -242,6 +242,11 @@ public final class CoreCommands implements CommandExecutor, TabCompleter {
                     if (target != null) {
                         plugin.inventories().open(viewer, target, args.length > 1 && args[1].equalsIgnoreCase("ender"));
                     }
+                }
+                return true;
+            case "lunar":
+                if (allowed(sender, "tukicore.lunar")) {
+                    lunar(sender, args);
                 }
                 return true;
             case "gm":
@@ -798,6 +803,18 @@ public final class CoreCommands implements CommandExecutor, TabCompleter {
                     options.add("ender");
                 }
                 break;
+            case "lunar":
+                if (n == 1 && sender.hasPermission("tukicore.lunar.staff")) {
+                    options.add("staff");
+                } else if (n == 2 && args[0].equalsIgnoreCase("staff")) {
+                    options.addAll(Arrays.asList("on", "off"));
+                    if (sender.hasPermission("tukicore.lunar.others")) {
+                        options.addAll(visibleNames(sender));
+                    }
+                } else if (n == 3 && args[0].equalsIgnoreCase("staff")) {
+                    options.addAll(Arrays.asList("on", "off"));
+                }
+                break;
             case "fly":
                 if (n == 1 && sender.hasPermission("tukicore.fly.others")) {
                     options.addAll(visibleNames(sender));
@@ -815,5 +832,41 @@ public final class CoreCommands implements CommandExecutor, TabCompleter {
         }
         String last = n == 0 ? "" : args[n - 1].toLowerCase(Locale.ROOT);
         return options.stream().filter(o -> o.toLowerCase(Locale.ROOT).startsWith(last)).collect(Collectors.toList());
+    }
+
+    /** /lunar, /lunar staff [on|off], /lunar staff <jugador> [on|off]. */
+    private void lunar(CommandSender sender, String[] args) {
+        if (args.length == 0) {
+            plugin.lunar().status(sender);
+            return;
+        }
+        if (!args[0].equalsIgnoreCase("staff")) {
+            usage(sender, "/lunar [staff [jugador] [on|off]]");
+            return;
+        }
+        if (!allowed(sender, "tukicore.lunar.staff")) {
+            return;
+        }
+        Boolean on = args.length > 1 ? onOff(args[args.length - 1]) : null;
+        boolean hasTarget = args.length > 2 || (args.length == 2 && on == null);
+        Player target;
+        if (hasTarget) {
+            if (!allowed(sender, "tukicore.lunar.others")) {
+                return;
+            }
+            target = target(sender, args[1]);
+        } else {
+            target = self(sender);
+        }
+        if (target != null) {
+            plugin.lunar().toggle(sender, target, on);
+        }
+    }
+
+    private static Boolean onOff(String word) {
+        if (word.equalsIgnoreCase("on")) {
+            return Boolean.TRUE;
+        }
+        return word.equalsIgnoreCase("off") ? Boolean.FALSE : null;
     }
 }

@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "cl.itstuki.core"
-version = "1.2.0"
+version = "1.3.0"
 description = "Rangos, chat y moderación para Spigot/Paper 1.8.8 – 26.3 (edición Legacy)."
 
 repositories {

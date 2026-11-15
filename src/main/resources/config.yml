@@ -93,3 +93,21 @@ tab:
       - "<gradient:#55FF55:#00AAAA><bold>Mi Servidor</bold></gradient>"
     footer:
       - "<gray>Jugadores: <white><papi:server_online>"
+
+lunar:
+  # Integración con Lunar Client (Apollo, su API oficial) sin plugins extra: TukiCore habla con el cliente
+  # directamente. Sirve para que el staff con Lunar use sus mods de staff nativos y reciba notificaciones de Lunar.
+  enabled: true
+  # Notificación de Lunar (arriba a la derecha) al staff cuando entra un cliente sospechoso.
+  notifications: true
+  staff-mods:
+    # Mods de staff que se activan con /lunar staff (necesita tukicore.lunar.staff):
+    #   XRAY = ver minerales a través de la piedra · NAMETAGS = ver nombres a través de paredes
+    #   BHOP = bunny hop (ojo: puede hacer saltar al anticheat)
+    mods: [XRAY, NAMETAGS]
+    # true = se encienden solos; false = quedan desbloqueados y el staff los prende en el menú de mods de Lunar.
+    enabled-by-default: true
+    # Encenderlos al entrar en vanish y apagarlos al salir.
+    with-vanish: true
+    # Encenderlos siempre al entrar al servidor (para quien tenga el permiso).
+    auto-enable: false

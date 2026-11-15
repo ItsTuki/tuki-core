@@ -32,6 +32,7 @@ public final class TukiCore extends JavaPlugin {
     private VanishManager vanish;
     private final cl.itstuki.core.staff.InventoryViewer inventories = new cl.itstuki.core.staff.InventoryViewer(this);
     private ClientCheck clientCheck;
+    private cl.itstuki.core.staff.LunarApollo lunar;
     private DevMode devMode;
     private final PlaceholderHook placeholders = new PlaceholderHook();
 
@@ -48,6 +49,7 @@ public final class TukiCore extends JavaPlugin {
         messages = new PrivateMessages(this);
         vanish = new VanishManager(this);
         clientCheck = new ClientCheck(this);
+        lunar = new cl.itstuki.core.staff.LunarApollo(this);
         devMode = new DevMode(this);
         ranks.startBackend();
         TukiCoreAPI.init(this);
@@ -62,6 +64,8 @@ public final class TukiCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(vanish, this);
         getServer().getPluginManager().registerEvents(inventories, this);
         getServer().getPluginManager().registerEvents(clientCheck, this);
+        getServer().getPluginManager().registerEvents(lunar, this);
+        lunar.register();
         vanish.start();
         getServer().getPluginManager().registerEvents(devMode, this);
         devMode.start();
@@ -74,6 +78,9 @@ public final class TukiCore extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        if (lunar != null) {
+            lunar.unregister();
+        }
         if (devMode != null) {
             devMode.stop();
         }
@@ -91,6 +98,8 @@ public final class TukiCore extends JavaPlugin {
     public void reloadAll() {
         reloadConfig();
         lang.load(getConfig().getString("language", "es"));
+        lunar.unregister();
+        lunar.register();
         ranks.stopBackend();
         ranks.load();
         ranks.startBackend();
@@ -106,5 +115,6 @@ public final class TukiCore extends JavaPlugin {
     public VanishManager vanish() { return vanish; }
     public cl.itstuki.core.staff.InventoryViewer inventories() { return inventories; }
     public ClientCheck clientCheck() { return clientCheck; }
+    public cl.itstuki.core.staff.LunarApollo lunar() { return lunar; }
     public DevMode devMode() { return devMode; }
 }

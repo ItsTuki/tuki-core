@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.3.0 — 2026-11-15
+
+Para las dos ediciones (completa y Legacy).
+
+### Nuevo
+- **Integración con Lunar Client (Apollo)**, sin instalar el plugin de Apollo:
+  - **Mods de staff nativos de Lunar** con `/lunar staff [on|off]` (`tukicore.lunar.staff`): **XRay**, **Nametags** a través de paredes y **Bunny hop**. Se eligen en `lunar.staff-mods.mods`; por defecto vienen XRay y Nametags.
+  - Se activan solos al entrar en vanish y se apagan al salir (`lunar.staff-mods.with-vanish`), o siempre al entrar al servidor (`auto-enable`).
+  - `/lunar` (`/apollo`): quién está usando Lunar Client.
+  - `/lunar staff <jugador> [on|off]` (`tukicore.lunar.others`): activarlos a otro miembro del staff.
+  - Notificación nativa de Lunar al staff cuando entra un cliente sospechoso (`lunar.notifications`).
+
 ## 1.2.0 — 2026-11-08
 
 Para las dos ediciones (completa y Legacy).

@@ -96,6 +96,24 @@ Permisos agrupados:
     - coincide con la lista `client-check.suspicious` (wurst, meteor, liquidbounce, baritone, xray…).
   - Paper **no recibe la lista de mods** del cliente: los canales de red son la mejor pista disponible. Un cliente de hacks bien hecho puede disfrazarse de vanilla, así que es una ayuda para vigilar, no una prueba.
 
+## Lunar Client (Apollo)
+
+TukiCore habla directo con **Lunar Client** por Apollo, la API oficial de Lunar para servidores. No necesitas instalar el plugin de Apollo y funciona en las dos ediciones, de 1.8.8 a 26.3.
+
+- **Mods de staff nativos de Lunar** (`/lunar staff`, permiso `tukicore.lunar.staff`):
+  - **XRay**: ves los minerales a través de la piedra.
+  - **Nametags**: ves los nombres a través de las paredes.
+  - **Bunny hop**: viene apagado porque puede hacer saltar al anticheat.
+  - Elige cuáles se activan en `lunar.staff-mods.mods`.
+  - Se encienden solos (`enabled-by-default`). También aparecen en el menú de mods de Lunar (Right Shift), donde puedes apagarlos y prenderlos.
+- **Con vanish**: al entrar en vanish se te activan los mods de staff y al salir se apagan (`lunar.staff-mods.with-vanish`). Con `auto-enable: true` se activan siempre al entrar al servidor.
+- **Comandos**:
+  - `/lunar` (`/apollo`): quién está usando Lunar. La ★ marca a quien tiene los mods de staff activos.
+  - `/lunar staff [on|off]`: activarlos o desactivarlos para ti.
+  - `/lunar staff <jugador> [on|off]`: lo mismo para otro jugador (`tukicore.lunar.others`).
+- **Notificaciones de Lunar**: el staff con Lunar recibe arriba a la derecha el aviso de cliente sospechoso (`lunar.notifications`).
+- Los mods de staff solo funcionan para quien use Lunar Client. A quien no lo use no se le envía nada.
+
 ## Modo dev
 
 `/dev` es solo para las cuentas **premium** que pongas en `dev-mode.players`, identificadas por su UUID de Mojang y no por el nombre. Viene desactivado (`dev-mode.enabled: false`), no lo trae el OP y ningún otro jugador puede activarlo.
